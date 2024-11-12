@@ -1,0 +1,6 @@
+framework module Pods_DailyEnglish {
+  umbrella header "Pods-DailyEnglish-umbrella.h"
+
+  export *
+  module * { export * }
+}
