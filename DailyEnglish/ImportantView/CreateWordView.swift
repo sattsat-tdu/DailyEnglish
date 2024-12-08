@@ -39,7 +39,7 @@ struct CreateWordView: View {
                 TextField("    make (英語を入力)", text: $englishText)
                     .keyboardType(.alphabet)
                     .frame(height: 50)
-                    .background(Color("ItemColor"))
+                    .background(.item)
                     .cornerRadius(10)
                     .shadow(radius: 2)
                     .focused($focus, equals: FocusType.english)
@@ -55,7 +55,7 @@ struct CreateWordView: View {
                 TextField("    作る (日本語を入力)", text: $japaneseText)
                     .keyboardType(.default)
                     .frame(height: 50)
-                    .background(Color("ItemColor"))
+                    .background(.item)
                     .cornerRadius(10)
                     .shadow(radius: 2)
                     .focused($focus, equals: FocusType.japanese)
@@ -89,7 +89,7 @@ struct CreateWordView: View {
             })
         }
         .padding()
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
         .onAppear {
             focus = .english
         }

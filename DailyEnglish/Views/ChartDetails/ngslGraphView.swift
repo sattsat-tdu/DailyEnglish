@@ -45,9 +45,7 @@ struct ngslGraphView: View {
                     }
                 }
                 .padding()
-                .background(Color("ItemColor"))
-                .clipShape(.rect(cornerRadius: 10))
-                .shadow(radius: 3) 
+                .itemStyle()
                 
                 //リンクへ飛ばす。
                 Link(destination: URL(string: "https://apps.apple.com/jp/developer/daisuke-ishii/id1609332032")!) {

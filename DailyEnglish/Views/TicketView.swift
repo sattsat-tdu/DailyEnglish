@@ -112,7 +112,7 @@ struct TicketView: View {
             .padding()
             .navigationTitle("チケット管理")
         }
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
     }
 }
 

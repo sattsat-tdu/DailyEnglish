@@ -42,7 +42,7 @@ struct editFolderPage: View {
             Spacer()
         }
         .padding()
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
     }
 }
 

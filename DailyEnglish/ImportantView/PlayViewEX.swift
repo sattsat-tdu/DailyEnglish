@@ -19,6 +19,13 @@ private enum ShowWord: String, CaseIterable {
     case all = "全ての単語"
 }
 
+enum LevelOfMastery: String, CaseIterable {
+    case goodWord = "得意単語"
+    case subtleWord = "微妙単語"
+    case badWord = "苦手単語"
+}
+
+
 struct PlayViewEX: View {
     //dataControllerのリファレンス
     @EnvironmentObject var dataController: DataController
@@ -243,8 +250,8 @@ struct PlayViewEX: View {
                                         .foregroundStyle(.black)
                                         .frame(maxWidth: .infinity)
                                         .frame(minHeight: 60,alignment:.center)
-                                        .background(isTapChoices && selectedWord?.japanese == word ? .orange : (inCorrectWord == word ? .blue : Color("ItemColor")))
-                                        .clipShape(.rect(cornerRadius: 10))
+                                        .background(isTapChoices && selectedWord?.japanese == word ? .orange : (inCorrectWord == word ? .blue : .item))
+                                        .clipShape(.rect(cornerRadius: 8))
                                         .shadow(radius: 1)
                                 })
                                 .disabled(isTapChoices)
@@ -512,7 +519,7 @@ struct PlayViewEX: View {
                         Spacer()
                             .frame(height: 20)
                     }
-                    .background(Color("BackgroundColor"))
+                    .background(.mainBackground)
                     .clipShape(.rect(cornerRadius: 40))
                     //下画面いっぱいまで広げる。
                     .ignoresSafeArea(edges: [.bottom])
@@ -522,7 +529,7 @@ struct PlayViewEX: View {
                 .background(blueBaseGradient)
             }
         }
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
         .onAppear(perform: prepareData)
         //暗記チケットが足りない時のアラート
         .alert("チケットが足りません", isPresented: $inductionAdAlert) {

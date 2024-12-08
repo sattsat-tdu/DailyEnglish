@@ -212,7 +212,7 @@ struct FileView: View {
         .onAppear {
         }
 
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
         .navigationTitle(folder.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

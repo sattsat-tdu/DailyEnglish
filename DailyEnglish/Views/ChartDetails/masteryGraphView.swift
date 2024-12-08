@@ -64,9 +64,7 @@ struct masteryGraphView: View {
                         .padding(.top)
                 }
                 .padding()
-                .background(Color("ItemColor"))
-                .clipShape(.rect(cornerRadius: 10))
-                .shadow(radius: 3)
+                .itemStyle()
                 
                 VStack {
                     Text("累計学習単語数")
@@ -93,10 +91,7 @@ struct masteryGraphView: View {
                     }
                 }
                 .padding()
-                .background(Color("ItemColor"))
-                .clipShape(.rect(cornerRadius: 10))
-                .shadow(radius: 3)
-                
+                .itemStyle()
                 
                 Text("復習する")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -126,6 +121,7 @@ struct masteryGraphView: View {
                 
             }
         }
+        .background(.mainBackground)
     }
     
     @ViewBuilder

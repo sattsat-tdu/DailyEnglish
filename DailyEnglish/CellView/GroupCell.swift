@@ -10,47 +10,71 @@ import SwiftUI
 struct GroupCell: View {
     
     let group: Group
-    let gradationColor = LinearGradient(gradient: Gradient(colors: [.orange, .yellow]), startPoint: .topTrailing, endPoint: .bottomLeading)
-    @State private var count: Int16 = 0
-    @State private var groupName = ""
+    private let count: Int16
+    private let groupName: String
     @State private var isShowWordList = false
     @State private var isShowPlay = false
     
+    init(group: Group) {
+        self.group = group
+        count = Int16(group.word?.count ?? 0)
+        groupName = group.groupname ?? ""
+    }
+    
     var body: some View {
-        VStack {
+        HStack(spacing: 16) {
+            Image(systemName: "folder.fill")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.yellow)
+                .frame(width: 48)
+            
+            VStack(alignment: .leading) {
+                ZStack {
+                    if groupName.contains("Part") {
+                        Text("\(group.total - count) / \(group.total) 学習済み")
+                        
+                    } else {
+                        Text("\(count) 単語")
+                    }
+                }
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                
+                Text(groupName)
+                    .font(.headline)
+            }
+            
+            Spacer()
+            
+            Button(action: {
+                isShowWordList = true
+            }) {
+                Image(systemName: "list.bullet")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .padding(12)
+                    .overlay(
+                        Circle()
+                            .stroke(.secondary, lineWidth: 1) // 外枠を追加
+                    )
+            }
+            
             Button(action: {
                 isShowPlay = true
             }, label: {
-                HStack {
-                    VStack {
-                        HStack {
-                            Image(systemName: "folder.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundStyle(.yellow)
-                                .frame(width: 50)
-                                .opacity(0.8)
-                            
-                            Spacer()
-                            
-                            Text(groupName)
-                                .foregroundStyle(.primary)
-                                .font(.title3.bold())
-                            
-                            Spacer()
-                        }
-                    }
-                    Text("〉")
-                        .font(.title)
-                }
-                .padding()
+                Image(systemName: "chevron.right")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(.green)
+                    .padding(12)
+                    .overlay(
+                        Circle()
+                            .stroke(.secondary, lineWidth: 1) // 外枠を追加
+                    )
             })
-            //ボタン内のText色を青にしないため
-            .buttonStyle(.plain)
-//            .fullScreenCover(isPresented: $isShowPlay) {
-//                PlayView(group: group)
-//            }
-            //新アプデ
             .fullScreenCover(isPresented: $isShowPlay) {
                 if let word = group.word {
                     PlayViewEX(
@@ -62,125 +86,26 @@ struct GroupCell: View {
                 }
 
             }
-            HStack {
-                
-                Button(action: {
-                    isShowWordList = true
-                }, label: {
-                    Label("一覧を見る 〉", systemImage: "list.bullet.rectangle")
-                        .font(.headline)
-                        .foregroundStyle(.black)
-//                        .frame(maxWidth: .infinity)
-                })
-                .fullScreenCover(isPresented: $isShowWordList) {
-                    WordListView(group: group)
-                }
-                Spacer()
-                
-                if groupName.contains("Part") {
-                    Text("\(group.total - count) / \(group.total) 学習済み")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.secondary)
-                    
-                } else {
-                    Text("\(count) 単語")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.secondary)
-                }
+            .fullScreenCover(isPresented: $isShowWordList) {
+                WordListView(group: group)
             }
-            .padding()
-            .background(gradationColor)
         }
-//        .padding()
-        .background(Color("ItemColor"))
-        .clipShape(.rect(cornerRadius: 10))
-        .clipped()
-        .shadow(radius: 1)
-        .onAppear {
-            count = Int16(group.word?.count ?? 0)
-            groupName = group.groupname ?? ""
-        }
-        //        VStack {
-        //            HStack(spacing:20) {
-        //                Image(systemName: "folder.fill")
-        //                    .resizable()
-        //                    .scaledToFit()
-        //                    .foregroundStyle(.yellow)
-        //                    .frame(width: 50)
-        //
-        //
-        //                VStack(spacing: 10) {
-        //                    Text(groupName)
-        //                        .font(.title.bold())
-        //
-        //                    if groupName.contains("Part") {
-        //                        Text("\(group.total - count) / \(group.total) 学習済み")
-        //                            .font(.subheadline)
-        //                            .foregroundStyle(Color.secondary)
-        //
-        //                    } else {
-        //                        Text("\(count) 単語")
-        //                            .font(.subheadline)
-        //                            .foregroundStyle(Color.secondary)
-        //                    }
-        //                }
-        //            }
-        //            Divider()
-        //                .padding()
-        //
-        //            HStack(spacing: 20) {
-        //
-        //                Button(action: {
-        //                    isShowWordList = true
-        //                }, label: {
-        //                    Label("一覧を見る", systemImage: "list.bullet.rectangle")
-        //                        .font(.headline)
-        //                        .foregroundStyle(.black)
-        //                        .frame(maxWidth: .infinity)
-        //                        .frame(minHeight: 50,alignment:.center)
-        //                        .background(Color.yellow)
-        //                        .clipShape(.rect(cornerRadius: 10))
-        //                })
-        //                .fullScreenCover(isPresented: $isShowWordList) {
-        //                    WordListView(group: group)
-        //                }
-        //
-        //                Button(action: {
-        //                    isShowPlay = true
-        //                }, label: {
-        //                    Label("学習する", systemImage: "pencil.and.outline")
-        //                        .font(.headline)
-        //                        .foregroundStyle(.black)
-        //                        .frame(maxWidth: .infinity)
-        //                        .frame(minHeight: 50,alignment:.center)
-        //                        .background(Color.yellow)
-        //                        .clipShape(.rect(cornerRadius: 10))
-        //                })
-        //                .fullScreenCover(isPresented: $isShowPlay) {
-        //                    PlayView(group: group)
-        //                }
-        //
-        //            }
-        //        }
-        //        .padding()
-        //        .background(Color("ItemColor"))
-        //        .clipShape(.rect(cornerRadius: 20))
-        //        .clipped()
-        //        .shadow(radius: 1)
-        //        .padding(.vertical)
-        //        .onAppear {
-        //            count = Int16(group.word?.count ?? 0)
-        //            groupName = group.groupname ?? ""
-        //        }
+        .buttonStyle(.plain)
+        .padding(.vertical, 10)
+        .padding(.horizontal)
+        .itemStyle()
     }
 }
 
+import CoreData
 #Preview {
-    let previewContext = DataController().container.viewContext
-    let testGroup = Group(context: previewContext)
+    let container = NSPersistentContainer(name: "DataModel")
+    let context = container.viewContext
+    
+    let testGroup = Group(context: context)
     testGroup.groupname = "Part0 テスト単語"
     testGroup.total = 3264
     
     return GroupCell(group: testGroup)
-        .environment(\.managedObjectContext, previewContext)
+        .environment(\.managedObjectContext, context)
 }

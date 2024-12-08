@@ -34,7 +34,7 @@ struct StudySoundView: View {
     @State private var inductionAdAlert = false
     let text = "発音順"
     //グラデーションカラー
-    let gradationColor = LinearGradient(gradient: Gradient(colors: [.blue, Color("BackgroundColor")]), startPoint: .top, endPoint: .bottom)
+    let gradationColor = LinearGradient(gradient: Gradient(colors: [.blue, .mainBackground]), startPoint: .top, endPoint: .bottom)
     let widthsize =  UIScreen.main.bounds.width / 1.7
 
     var body: some View {
@@ -206,7 +206,7 @@ struct StudySoundView: View {
                         .padding(.top,-10)
                 }
                 .padding()
-                .background(Color("BackgroundColor"))
+                .background(.mainBackground)
             }
             .background(gradationColor)
             .navigationTitle("リスニング学習")

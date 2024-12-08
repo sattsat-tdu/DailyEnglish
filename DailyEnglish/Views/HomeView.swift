@@ -18,74 +18,14 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false){
-                LazyVStack(spacing: 20, pinnedViews: [.sectionHeaders]) {
+                LazyVStack(spacing: 24, pinnedViews: [.sectionHeaders]) {
                     Section(header: AdBannerView().frame(height: 50)) {
                         
-                        Text("学習する")
-                            .font(.title2.bold())
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        studyBox
                         
-                        HStack {
-                            VStack {
-                                DestinationLinkButton(
-                                    destinationView: StudyWordView(),
-                                    imageName: "brain.head.profile",
-                                    title: "日常単語", 
-                                    color: .yellow
-                                )
-                                DestinationLinkButton(
-                                    destinationView: MyWordView(),
-                                    imageName: "menucard",
-                                    title: "My単語帳", 
-                                    color: .green
-                                )
-                            }
-                            VStack {
-                                DestinationLinkButton(
-                                    destinationView: StudySoundView(),
-                                    imageName: "airpodsmax",
-                                    title: "リスニング", 
-                                    color: .blue
-                                )
-                                DestinationLinkButton(
-                                    destinationView: StudySettingView(),
-                                    imageName: "gearshape",
-                                    title: "学習設定",
-                                    color: .orange
-                                )
-                            }
-                        }
+                        ticketBox
                         
-                        NavigationLink {
-                            TicketView()
-                        } label: {
-                            
-                            HStack {
-                                VStack {
-                                    HStack {
-                                        Label("暗記チケット", systemImage: "brain.filled.head.profile")
-                                        Spacer()
-                                        Text("×\(ticketInfo.ankiTicket)")
-                                    }
-                                    
-                                    HStack {
-                                        Label("リスニングチケット", systemImage: "airpodsmax")
-                                        Spacer()
-                                        Text("×\(ticketInfo.listeningTicket)")
-                                    }
-                                }
-                                .font(.footnote)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.1)
-                                Divider()
-                                Text("チケット追加　〉")
-                                    .font(.headline)
-                            }
-                            .padding()
-                            .background()
-                            .clipShape(.rect(cornerRadius: 10))
-                            .shadow(radius: 1)
-                        }
+                        reviewBox
                         
                         VStack(spacing: 15) {
                             Text("復習する")
@@ -99,12 +39,12 @@ struct HomeView: View {
                                     masteryGraphView()
                                 } label: {
                                     
-                                    VStack {
+                                    VStack(spacing: 16) {
                                         Image(systemName: "chart.bar")
                                             .resizable()
                                             .scaledToFit()
                                             .opacity(0.6)
-                                            .frame(height: 50)
+                                            .frame(height: 48)
                                             .padding()
                                         Text("習得度　〉")
                                             .font(.headline)
@@ -121,12 +61,12 @@ struct HomeView: View {
                                     forgettingCurveView()
                                 } label: {
                                     
-                                    VStack {
+                                    VStack(spacing: 16) {
                                         Image(systemName: "chart.line.uptrend.xyaxis")
                                             .resizable()
                                             .scaledToFit()
                                             .opacity(0.6)
-                                            .frame(height: 50)
+                                            .frame(height: 48)
                                             .padding()
                                         Text("忘却曲線　〉")
                                             .font(.headline)
@@ -207,7 +147,98 @@ struct HomeView: View {
                     ticketInfo = StudyInfo.load()
                 }
             }
-            .background(Color("BackgroundColor"))
+            .background(.mainBackground)
+        }
+    }
+    
+    private var studyBox: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("学習する")
+                .font(.title2.bold())
+//                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            HStack {
+                VStack {
+                    DestinationLinkButton(
+                        destinationView: StudyWordView(),
+                        imageName: "brain.head.profile",
+                        title: "日常単語",
+                        color: .yellow
+                    )
+                    DestinationLinkButton(
+                        destinationView: MyWordView(),
+                        imageName: "menucard",
+                        title: "My単語帳",
+                        color: .green
+                    )
+                }
+                VStack {
+                    DestinationLinkButton(
+                        destinationView: StudySoundView(),
+                        imageName: "airpodsmax",
+                        title: "リスニング",
+                        color: .blue
+                    )
+                    DestinationLinkButton(
+                        destinationView: StudySettingView(),
+                        imageName: "gearshape",
+                        title: "学習設定",
+                        color: .orange
+                    )
+                }
+            }
+        }
+    }
+    
+    private var ticketBox: some View {
+        NavigationLink {
+            TicketView()
+        } label: {
+            HStack {
+                VStack {
+                    HStack {
+                        Label("暗記チケット", systemImage: "brain.filled.head.profile")
+                        Spacer()
+                        Text("×\(ticketInfo.ankiTicket)")
+                    }
+                    
+                    HStack {
+                        Label("リスニングチケット", systemImage: "airpodsmax")
+                        Spacer()
+                        Text("×\(ticketInfo.listeningTicket)")
+                    }
+                }
+                .font(.footnote)
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+                Divider()
+                Text("チケット追加　〉")
+                    .font(.headline)
+            }
+            .padding()
+            .itemStyle()
+        }
+    }
+    
+    private var reviewBox: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("復習する")
+                .font(.title2.bold())
+            
+            HStack {
+                DestinationLinkButton(
+                    destinationView: masteryGraphView(),
+                    imageName: "chart.bar",
+                    title: "習得度",
+                    color: .cyan
+                )
+                DestinationLinkButton(
+                    destinationView: forgettingCurveView(),
+                    imageName: "chart.line.uptrend.xyaxis",
+                    title: "忘却曲線",
+                    color: .cyan
+                )
+            }
         }
     }
 }
@@ -221,8 +252,7 @@ struct DestinationLinkButton<Destination: View>: View {
     var customColor: LinearGradient {
         return LinearGradient(
             gradient: Gradient(stops: [
-                .init(color: Color("ItemColor"), location: 0.0),
-                .init(color: Color("ItemColor"), location: 0.5),
+                .init(color: .item, location: 0.0),
                 .init(color: color, location: 1.0)]),
             startPoint: .topLeading,
             endPoint: .bottomTrailing)

@@ -11,14 +11,16 @@ struct WordCell: View {
     
     @EnvironmentObject var dataController: DataController
     @EnvironmentObject var speechRef: SpeechSynthesizer
-    //    @StateObject private var speechRef = SpeechSynthesizer()
     let word: Word
-    let height = UIScreen.main.bounds.height / 6
+    private let height = UIScreen.main.bounds.height / 6
     @State private var isShowMoreSentence = false
     @State private var isFavorite = false
     @State private var isSafariViewPresented = false
-    var urlString:String{
-        return "https://tatoeba.org/ja/sentences/search?from=eng&query=\(self.word.english ?? "")&to=jpn"
+    private let urlString: String
+    
+    init(word: Word) {
+        self.word = word
+        self.urlString = "https://tatoeba.org/ja/sentences/search?from=eng&query=\(word.english ?? "")&to=jpn"
     }
     
     var body: some View {
@@ -106,6 +108,7 @@ struct WordCell: View {
                         .resizable()
                         .frame(width: 10, height: 10)
                         .foregroundColor(.white)
+                        .padding([.top, .trailing], 8)
                         .padding(10)
                         .background(.red)
                         .clipShape(Circle())
@@ -113,11 +116,7 @@ struct WordCell: View {
             }
         }
         .padding()
-        .background(Color("ItemColor"))
-        .clipShape(.rect(cornerRadius: 20))
-        .clipped()
-        .shadow(radius: 5)
-        .padding()
+        .itemStyle()
         .animation(.default, value: isShowMoreSentence)
         .onTapGesture {
             isShowMoreSentence.toggle()

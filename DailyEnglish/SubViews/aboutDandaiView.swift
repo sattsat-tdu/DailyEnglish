@@ -24,7 +24,7 @@ struct aboutDandaiView: View {
             Spacer()
         }
         .padding()
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
         .navigationTitle("ダンダイとは")
     }
 }
