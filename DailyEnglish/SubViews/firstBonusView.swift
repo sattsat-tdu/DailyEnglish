@@ -41,7 +41,7 @@ struct firstBonusView: View {
                 })
             }
             .padding()
-            .background(Color("ItemColor"))
+            .background(.item)
             .clipShape(.rect(cornerRadius: 30))
             .shadow(radius: 5)
         .padding()

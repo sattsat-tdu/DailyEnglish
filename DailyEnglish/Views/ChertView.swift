@@ -35,7 +35,7 @@ struct ChertView: View {
         }
         .navigationTitle("成長記録")
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
     }
     
     //タブ画面を構成

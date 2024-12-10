@@ -29,7 +29,7 @@ struct FavoriteListView: View {
                     }
                 }
             }
-            .background(Color("BackgroundColor"))
+            .background(.mainBackground)
             .clipShape(.rect(cornerRadius: 20))
             
             

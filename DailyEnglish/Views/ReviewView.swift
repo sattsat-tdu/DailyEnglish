@@ -19,7 +19,7 @@ struct ReviewView: View {
     
     let gradationColor = LinearGradient(gradient: Gradient(colors: [.cyan,.blue.opacity(0.8)] ), startPoint: .topLeading, endPoint: .bottomTrailing)
     
-         //Color("BackgroundColor")]
+         //.mainBackground]
                                                                      
     var body: some View {
         
@@ -90,7 +90,7 @@ struct ReviewView: View {
             .padding()
             
         }
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
         .navigationTitle("復習")
     }
 

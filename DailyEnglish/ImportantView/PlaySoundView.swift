@@ -57,7 +57,7 @@ struct PlaySoundView: View {
                     .font(.title3.bold())
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color("BackgroundColor"))
+                    .background(.mainBackground)
                     .clipShape(Capsule())
                     .padding(.top)
                 

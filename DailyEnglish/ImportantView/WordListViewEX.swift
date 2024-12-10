@@ -76,7 +76,7 @@ struct WordListViewEX: View {
                 }
             }
         }
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
         .onAppear {
             //引数をStateの変数に入れる。
 //            words = initWord

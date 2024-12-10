@@ -41,7 +41,7 @@ struct forgettingCurveView: View {
                     
                 }
                 .padding()
-                .background(Color("ItemColor"))
+                .background(.item)
                 .clipShape(.rect(cornerRadius: 10))
                 .clipped()
                 .shadow(radius: 3)
@@ -61,6 +61,7 @@ struct forgettingCurveView: View {
             sevenDaysWord = dataController.getTestWords(daysago: 7)
             thirtyDaysWord = dataController.getTestWords(daysago: 30)
         }
+        .background(.mainBackground)
     }
 }
 

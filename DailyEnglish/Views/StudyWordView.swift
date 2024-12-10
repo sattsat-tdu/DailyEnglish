@@ -15,54 +15,23 @@ struct StudyWordView: View {
         predicate: NSPredicate(format: "groupname CONTAINS[cd] %@", "Part")
     ) var mainGroup: FetchedResults<Group>
     
-    //    @State private var flag = true
-    
     var body: some View {
         
         
         ScrollView(showsIndicators: false){
-            VStack{
+            VStack(spacing: 24) {
                 AdBannerView().frame(height: 50)
-                VStack {
-                    
-                    Text("NGSL単語学習状況(%)")
-                    
-                    Chart {
-                        ForEach(mainGroup) { group in
-                            BarMark(
-                                x: .value("Value", convertPercentage(group: group)),
-                                y: .value("Name", group.groupname ?? "nil")
-                            )
-                            .annotation(position: .top){
-                                //学習済みなら表示
-                                if group.word?.count == 0 {
-                                    Image(systemName: "checkmark.seal.fill")
-                                        .foregroundStyle(.yellow)
-                                }
-                            }
-                        }
-                    }
-                    .foregroundStyle(.yellow)
-                    .chartXScale(domain: 0...100)
-                }
-                .frame(height: 200)
-                .padding()
-                .background(Color("ItemColor"))
-                .clipShape(.rect(cornerRadius: 10))
+                
+                studyChart
                 
                 chatKunView(chatText: "NGSL単語は、一般的な英文の92％以上を網羅しているんだって！")
                 
-                ForEach(mainGroup, id: \.id) { group in
-                    GroupCell(group: group)
-//                        .id(UUID())
-                    //↑Viewが更新されるようになるためのid付与
-                }
+                folderList
             }
             .padding()
         }
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
         .navigationTitle("日常単語(NGSL)")
-        
     }
     
     private func convertPercentage(group: Group) -> Int {
@@ -80,6 +49,42 @@ struct StudyWordView: View {
         return Int(percentage)
     }
     
+    private var studyChart: some View {
+        VStack(alignment: .leading) {
+            
+            Text("NGSL単語学習状況(%)")
+                .font(.headline)
+            
+            Chart {
+                ForEach(mainGroup) { group in
+                    BarMark(
+                        x: .value("Value", convertPercentage(group: group)),
+                        y: .value("Name", group.groupname ?? "nil")
+                    )
+                    .annotation(position: .top){
+                        //学習済みなら表示
+                        if group.word?.count == 0 {
+                            Image(systemName: "checkmark.seal.fill")
+                                .foregroundStyle(.yellow)
+                        }
+                    }
+                }
+            }
+            .foregroundStyle(.yellow)
+            .chartXScale(domain: 0...100)
+        }
+        .frame(height: 200)
+        .padding()
+        .itemStyle()
+    }
+    
+    private var folderList: some View {
+        VStack(spacing: 16) {
+            ForEach(mainGroup, id: \.id) { group in
+                GroupCell(group: group)
+            }
+        }
+    }
 }
 
 #Preview {

@@ -83,7 +83,7 @@ struct WordListView: View {
                 }
             }
         }
-        .background(Color("BackgroundColor"))
+        .background(.mainBackground)
     }
 }
 

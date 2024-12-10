@@ -32,13 +32,13 @@
 		001523CA2ADA2AAB00C15ED2 /* StructData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523C92ADA2AAB00C15ED2 /* StructData.swift */; };
 		001523CC2ADA2B9000C15ED2 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523CB2ADA2B9000C15ED2 /* GroupCell.swift */; };
 		001523CE2ADACA4C00C15ED2 /* WordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523CD2ADACA4C00C15ED2 /* WordListView.swift */; };
-		001523D12ADCB5BB00C15ED2 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523D02ADCB5BB00C15ED2 /* PlayView.swift */; };
 		00184C682AE3F622002A6DD5 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00184C672AE3F622002A6DD5 /* ReviewView.swift */; };
 		0063B52C2AF5F56F00738D5F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0063B52B2AF5F56F00738D5F /* AlertKit */; };
 		0063B52F2AFB21BA00738D5F /* MyWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063B52E2AFB21BA00738D5F /* MyWordViewModel.swift */; };
 		0063B5312AFBA7EA00738D5F /* CreateWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063B5302AFBA7EA00738D5F /* CreateWordView.swift */; };
 		0078E0EC2BE914D600E61732 /* PlayViewEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078E0EB2BE914D600E61732 /* PlayViewEX.swift */; };
 		0078E0EE2BEF729F00E61732 /* FavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078E0ED2BEF729F00E61732 /* FavoriteListView.swift */; };
+		008294A12D05EED40052A876 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008294A02D05EED40052A876 /* View+Extensions.swift */; };
 		0084935E2BDB7FDE00A20B85 /* forgettingCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084935D2BDB7FDE00A20B85 /* forgettingCurveView.swift */; };
 		008493602BDB80D200A20B85 /* ngslGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084935F2BDB80D200A20B85 /* ngslGraphView.swift */; };
 		008493622BDB812B00A20B85 /* masteryGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008493612BDB812B00A20B85 /* masteryGraphView.swift */; };
@@ -96,13 +96,13 @@
 		001523C92ADA2AAB00C15ED2 /* StructData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructData.swift; sourceTree = "<group>"; };
 		001523CB2ADA2B9000C15ED2 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		001523CD2ADACA4C00C15ED2 /* WordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListView.swift; sourceTree = "<group>"; };
-		001523D02ADCB5BB00C15ED2 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 		00184C672AE3F622002A6DD5 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		0020359E2AF4CD8C0036FAC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0063B52E2AFB21BA00738D5F /* MyWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewModel.swift; sourceTree = "<group>"; };
 		0063B5302AFBA7EA00738D5F /* CreateWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWordView.swift; sourceTree = "<group>"; };
 		0078E0EB2BE914D600E61732 /* PlayViewEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewEX.swift; sourceTree = "<group>"; };
 		0078E0ED2BEF729F00E61732 /* FavoriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListView.swift; sourceTree = "<group>"; };
+		008294A02D05EED40052A876 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		0084935D2BDB7FDE00A20B85 /* forgettingCurveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgettingCurveView.swift; sourceTree = "<group>"; };
 		0084935F2BDB80D200A20B85 /* ngslGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ngslGraphView.swift; sourceTree = "<group>"; };
 		008493612BDB812B00A20B85 /* masteryGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = masteryGraphView.swift; sourceTree = "<group>"; };
@@ -169,12 +169,15 @@
 		0015235D2AD6929C00C15ED2 /* DailyEnglish */ = {
 			isa = PBXGroup;
 			children = (
-				0020359E2AF4CD8C0036FAC2 /* Info.plist */,
 				0015235E2AD6929C00C15ED2 /* DailyEnglishApp.swift */,
-				001523CF2ADCB58000C15ED2 /* ImportantView */,
+				0082949F2D05EECC0052A876 /* Extensions */,
+				00F8D70E2D084D77008EB03B /* Models */,
+				00F8D70C2D084D5C008EB03B /* ViewModels */,
 				001523A02AD8B70500C15ED2 /* Views */,
+				00F8D70D2D084D6B008EB03B /* ViewParts */,
+				0020359E2AF4CD8C0036FAC2 /* Info.plist */,
+				001523CF2ADCB58000C15ED2 /* ImportantView */,
 				001523AB2AD8E61000C15ED2 /* SubViews */,
-				001523C62ADA1D9700C15ED2 /* CellView */,
 				0015236C2AD6935F00C15ED2 /* DataModel */,
 				001523622AD6929E00C15ED2 /* Assets.xcassets */,
 				001523642AD6929E00C15ED2 /* Preview Content */,
@@ -266,13 +269,20 @@
 			isa = PBXGroup;
 			children = (
 				001523CD2ADACA4C00C15ED2 /* WordListView.swift */,
-				001523D02ADCB5BB00C15ED2 /* PlayView.swift */,
 				00A7B7B92AF2018700F768AA /* PlaySoundView.swift */,
 				0063B5302AFBA7EA00738D5F /* CreateWordView.swift */,
 				008493632BDDB8B600A20B85 /* WordListViewEX.swift */,
 				0078E0EB2BE914D600E61732 /* PlayViewEX.swift */,
 			);
 			path = ImportantView;
+			sourceTree = "<group>";
+		};
+		0082949F2D05EECC0052A876 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				008294A02D05EED40052A876 /* View+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		0084935C2BDB7D7D00A20B85 /* ChartDetails */ = {
@@ -302,6 +312,28 @@
 				008611AA2ADFD7E100B29645 /* 感嘆詞.csv */,
 			);
 			path = PosCSV;
+			sourceTree = "<group>";
+		};
+		00F8D70C2D084D5C008EB03B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		00F8D70D2D084D6B008EB03B /* ViewParts */ = {
+			isa = PBXGroup;
+			children = (
+				001523C62ADA1D9700C15ED2 /* CellView */,
+			);
+			path = ViewParts;
+			sourceTree = "<group>";
+		};
+		00F8D70E2D084D77008EB03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C32183A6A41E73976019696E /* Pods */ = {
@@ -494,7 +526,7 @@
 				001523A42AD8B76D00C15ED2 /* ChertView.swift in Sources */,
 				008493622BDB812B00A20B85 /* masteryGraphView.swift in Sources */,
 				001523A22AD8B75100C15ED2 /* HomeView.swift in Sources */,
-				001523D12ADCB5BB00C15ED2 /* PlayView.swift in Sources */,
+				008294A12D05EED40052A876 /* View+Extensions.swift in Sources */,
 				000721FB2AE3ADB50082E903 /* chatKunView.swift in Sources */,
 				0015235F2AD6929C00C15ED2 /* DailyEnglishApp.swift in Sources */,
 				00C60FA32BE3EAE100CCB8D2 /* GraphViewer.swift in Sources */,
