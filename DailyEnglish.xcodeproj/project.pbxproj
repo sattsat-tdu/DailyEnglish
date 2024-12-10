@@ -66,6 +66,7 @@
 		00B3B8E52B1DDB4C0043BC60 /* aboutDandaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B3B8E42B1DDB4C0043BC60 /* aboutDandaiView.swift */; };
 		00C60FA32BE3EAE100CCB8D2 /* GraphViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C60FA22BE3EAE100CCB8D2 /* GraphViewer.swift */; };
 		00D44C862B156FD10066CD4B /* editFolderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D44C852B156FD10066CD4B /* editFolderPage.swift */; };
+		00F8D7102D084FA7008EB03B /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */; };
 		739ECE5F64D264067C01EE73 /* Pods_DailyEnglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +131,7 @@
 		00B3B8E42B1DDB4C0043BC60 /* aboutDandaiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutDandaiView.swift; sourceTree = "<group>"; };
 		00C60FA22BE3EAE100CCB8D2 /* GraphViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewer.swift; sourceTree = "<group>"; };
 		00D44C852B156FD10066CD4B /* editFolderPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editFolderPage.swift; sourceTree = "<group>"; };
+		00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		770E00210745F6B937BB8164 /* Pods-DailyEnglish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyEnglish.release.xcconfig"; path = "Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish.release.xcconfig"; sourceTree = "<group>"; };
 		9DF66CBA68865CFB8695124D /* Pods-DailyEnglish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyEnglish.debug.xcconfig"; path = "Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish.debug.xcconfig"; sourceTree = "<group>"; };
 		ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyEnglish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +334,7 @@
 		00F8D70E2D084D77008EB03B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				001523CC2ADA2B9000C15ED2 /* GroupCell.swift in Sources */,
 				008493672BE2202600A20B85 /* ColorModel.swift in Sources */,
 				001523BE2AD9892200C15ED2 /* StudyWordView.swift in Sources */,
+				00F8D7102D084FA7008EB03B /* UserDefaultsKeys.swift in Sources */,
 				008912382AE80721006BC899 /* SafariView.swift in Sources */,
 				001523C22AD98C0C00C15ED2 /* StudySettingView.swift in Sources */,
 				001523C02AD98BF400C15ED2 /* StudySoundView.swift in Sources */,
