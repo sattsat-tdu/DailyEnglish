@@ -169,13 +169,15 @@
 		0015235D2AD6929C00C15ED2 /* DailyEnglish */ = {
 			isa = PBXGroup;
 			children = (
-				0082949F2D05EECC0052A876 /* Extensions */,
-				0020359E2AF4CD8C0036FAC2 /* Info.plist */,
 				0015235E2AD6929C00C15ED2 /* DailyEnglishApp.swift */,
-				001523CF2ADCB58000C15ED2 /* ImportantView */,
+				0082949F2D05EECC0052A876 /* Extensions */,
+				00F8D70E2D084D77008EB03B /* Models */,
+				00F8D70C2D084D5C008EB03B /* ViewModels */,
 				001523A02AD8B70500C15ED2 /* Views */,
+				00F8D70D2D084D6B008EB03B /* ViewParts */,
+				0020359E2AF4CD8C0036FAC2 /* Info.plist */,
+				001523CF2ADCB58000C15ED2 /* ImportantView */,
 				001523AB2AD8E61000C15ED2 /* SubViews */,
-				001523C62ADA1D9700C15ED2 /* CellView */,
 				0015236C2AD6935F00C15ED2 /* DataModel */,
 				001523622AD6929E00C15ED2 /* Assets.xcassets */,
 				001523642AD6929E00C15ED2 /* Preview Content */,
@@ -310,6 +312,28 @@
 				008611AA2ADFD7E100B29645 /* 感嘆詞.csv */,
 			);
 			path = PosCSV;
+			sourceTree = "<group>";
+		};
+		00F8D70C2D084D5C008EB03B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		00F8D70D2D084D6B008EB03B /* ViewParts */ = {
+			isa = PBXGroup;
+			children = (
+				001523C62ADA1D9700C15ED2 /* CellView */,
+			);
+			path = ViewParts;
+			sourceTree = "<group>";
+		};
+		00F8D70E2D084D77008EB03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C32183A6A41E73976019696E /* Pods */ = {
