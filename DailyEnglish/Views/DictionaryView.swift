@@ -23,7 +23,7 @@ struct DictionaryView: View {
                 .padding()
             
             ScrollView {
-                LazyVStack {
+                LazyVStack(spacing: 16) {
                     ForEach(word) { word in
                         WordCell(word: word)
                     }

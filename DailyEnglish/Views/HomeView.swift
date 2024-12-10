@@ -27,92 +27,30 @@ struct HomeView: View {
                         
                         reviewBox
                         
-                        VStack(spacing: 15) {
-                            Text("復習する")
-                                .font(.title2.bold())
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.top)
-                            
-                            HStack {
-                                
-                                NavigationLink {
-                                    masteryGraphView()
-                                } label: {
-                                    
-                                    VStack(spacing: 16) {
-                                        Image(systemName: "chart.bar")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .opacity(0.6)
-                                            .frame(height: 48)
-                                            .padding()
-                                        Text("習得度　〉")
-                                            .font(.headline)
-                                            .foregroundStyle(.primary)
-                                            .frame(maxWidth: .infinity,alignment: .leading)
-                                    }
-//                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(circleGradient)
-                                    .clipShape(.rect(cornerRadius: 10))
-                                    .shadow(radius: 1)
-                                }
-                                NavigationLink {
-                                    forgettingCurveView()
-                                } label: {
-                                    
-                                    VStack(spacing: 16) {
-                                        Image(systemName: "chart.line.uptrend.xyaxis")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .opacity(0.6)
-                                            .frame(height: 48)
-                                            .padding()
-                                        Text("忘却曲線　〉")
-                                            .font(.headline)
-                                            .foregroundStyle(.primary)
-                                            .frame(maxWidth: .infinity,alignment: .leading)
-                                    }
-                                    .padding()
-                                    .background(circleGradient)
-                                    .clipShape(.rect(cornerRadius: 10))
-                                    .shadow(radius: 1)
-                                }
-                            }
-                            
-                            
-                            NavigationLink {
-                                FavoriteListView()
-                            } label: {
-                                
-                                HStack {
-                                    
-                                    Text("お気に入り単語　〉")
-                                        .font(.headline)
-                                        .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomLeading)
-                                    
-                                    Image(systemName: "folder.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .opacity(0.6)
-                                        .frame(height: 50)
-                                    
-                                }
-                                .padding()
-                                .background(yellowWhiteGradient)
-                                .clipShape(.rect(cornerRadius: 10))
-                                .shadow(radius: 1)
-
-                            }
-                            
-                        }
-                        .padding()
-                        .background()
-                        .clipShape(.rect(cornerRadius: 30))
-                        //paddingのデフォルト余白は16
-                        .padding(.horizontal,-16)
-                        .shadow(color: .primary.opacity(0.1),radius: 5,y: -5)
-                        
+                        //お気に入りView
+//                        NavigationLink {
+//                            FavoriteListView()
+//                        } label: {
+//                            
+//                            HStack {
+//                                
+//                                Text("お気に入り単語　〉")
+//                                    .font(.headline)
+//                                    .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomLeading)
+//                                
+//                                Image(systemName: "folder.fill")
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .opacity(0.6)
+//                                    .frame(height: 50)
+//                                
+//                            }
+//                            .padding()
+//                            .background(yellowWhiteGradient)
+//                            .clipShape(.rect(cornerRadius: 10))
+//                            .shadow(radius: 1)
+//
+//                        }
                         
                         //リンクへ飛ばす。
                         Link(destination: URL(string: "https://apps.apple.com/jp/developer/daisuke-ishii/id1609332032")!) {
