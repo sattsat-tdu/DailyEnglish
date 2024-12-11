@@ -13,7 +13,6 @@
 		001523632AD6929E00C15ED2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001523622AD6929E00C15ED2 /* Assets.xcassets */; };
 		001523662AD6929E00C15ED2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001523652AD6929E00C15ED2 /* Preview Assets.xcassets */; };
 		0015236F2AD6951600C15ED2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0015236D2AD6951600C15ED2 /* DataModel.xcdatamodeld */; };
-		001523712AD6955E00C15ED2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523702AD6955E00C15ED2 /* DataController.swift */; };
 		001523A22AD8B75100C15ED2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523A12AD8B75100C15ED2 /* HomeView.swift */; };
 		001523A42AD8B76D00C15ED2 /* ChertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523A32AD8B76C00C15ED2 /* ChertView.swift */; };
 		001523A62AD8B78700C15ED2 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523A52AD8B78700C15ED2 /* DictionaryView.swift */; };
@@ -81,7 +80,6 @@
 		001523622AD6929E00C15ED2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		001523652AD6929E00C15ED2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0015236E2AD6951600C15ED2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		001523702AD6955E00C15ED2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		001523A12AD8B75100C15ED2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		001523A32AD8B76C00C15ED2 /* ChertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChertView.swift; sourceTree = "<group>"; };
 		001523A52AD8B78700C15ED2 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
@@ -205,8 +203,6 @@
 		0015236C2AD6935F00C15ED2 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				0015236D2AD6951600C15ED2 /* DataModel.xcdatamodeld */,
-				001523702AD6955E00C15ED2 /* DataController.swift */,
 				00A7B79D2AEE28B000F768AA /* SoundViewModel.swift */,
 				0063B52E2AFB21BA00738D5F /* MyWordViewModel.swift */,
 				001523C92ADA2AAB00C15ED2 /* StructData.swift */,
@@ -342,6 +338,7 @@
 		00F8D70E2D084D77008EB03B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0015236D2AD6951600C15ED2 /* DataModel.xcdatamodeld */,
 				00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */,
 			);
 			path = Models;
@@ -536,7 +533,6 @@
 				00F8D71B2D0952B2008EB03B /* AppState.swift in Sources */,
 				001523C82ADA1E7600C15ED2 /* WordCell.swift in Sources */,
 				00184C682AE3F622002A6DD5 /* ReviewView.swift in Sources */,
-				001523712AD6955E00C15ED2 /* DataController.swift in Sources */,
 				001523C42ADA054300C15ED2 /* TicketView.swift in Sources */,
 				001523CC2ADA2B9000C15ED2 /* GroupCell.swift in Sources */,
 				008493672BE2202600A20B85 /* ColorModel.swift in Sources */,
