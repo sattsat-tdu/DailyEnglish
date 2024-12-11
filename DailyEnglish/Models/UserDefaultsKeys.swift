@@ -9,3 +9,7 @@
 enum SettingKeys: String {
     case questionFormat //出題形式　英→日（true）, 日→英(false)
 }
+
+enum AppStateKeys: String {
+    case lastVersion    //バージョンを保存。更新時の表示フラグ
+}

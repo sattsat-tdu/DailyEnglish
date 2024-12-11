@@ -68,6 +68,7 @@
 		00D44C862B156FD10066CD4B /* editFolderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D44C852B156FD10066CD4B /* editFolderPage.swift */; };
 		00F8D7102D084FA7008EB03B /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */; };
 		00F8D7172D090685008EB03B /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D7162D090685008EB03B /* CustomTab.swift */; };
+		00F8D71B2D0952B2008EB03B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D71A2D0952AE008EB03B /* AppState.swift */; };
 		739ECE5F64D264067C01EE73 /* Pods_DailyEnglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +135,7 @@
 		00D44C852B156FD10066CD4B /* editFolderPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editFolderPage.swift; sourceTree = "<group>"; };
 		00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		00F8D7162D090685008EB03B /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
+		00F8D71A2D0952AE008EB03B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		770E00210745F6B937BB8164 /* Pods-DailyEnglish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyEnglish.release.xcconfig"; path = "Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish.release.xcconfig"; sourceTree = "<group>"; };
 		9DF66CBA68865CFB8695124D /* Pods-DailyEnglish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyEnglish.debug.xcconfig"; path = "Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish.debug.xcconfig"; sourceTree = "<group>"; };
 		ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyEnglish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,7 +175,7 @@
 		0015235D2AD6929C00C15ED2 /* DailyEnglish */ = {
 			isa = PBXGroup;
 			children = (
-				0015235E2AD6929C00C15ED2 /* DailyEnglishApp.swift */,
+				00F8D7182D095272008EB03B /* Application */,
 				0082949F2D05EECC0052A876 /* Extensions */,
 				00F8D70E2D084D77008EB03B /* Models */,
 				00F8D70C2D084D5C008EB03B /* ViewModels */,
@@ -340,6 +342,15 @@
 				00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		00F8D7182D095272008EB03B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				00F8D71A2D0952AE008EB03B /* AppState.swift */,
+				0015235E2AD6929C00C15ED2 /* DailyEnglishApp.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		C32183A6A41E73976019696E /* Pods */ = {
@@ -510,6 +521,7 @@
 				001523CE2ADACA4C00C15ED2 /* WordListView.swift in Sources */,
 				008493642BDDB8B600A20B85 /* WordListViewEX.swift in Sources */,
 				00A7B79E2AEE28B000F768AA /* SoundViewModel.swift in Sources */,
+				00F8D71B2D0952B2008EB03B /* AppState.swift in Sources */,
 				001523C82ADA1E7600C15ED2 /* WordCell.swift in Sources */,
 				00184C682AE3F622002A6DD5 /* ReviewView.swift in Sources */,
 				001523712AD6955E00C15ED2 /* DataController.swift in Sources */,

@@ -91,7 +91,8 @@ struct DailyEnglishApp: App {
         }
     }
     //CoreData参照のため
-    @StateObject private var dataController = DataController()
+//    @StateObject private var dataController = DataController()
+    @StateObject private var dataController = DataController.shared
     //音声、効果音再生のため
     @StateObject private var speechSynthesizer = SpeechSynthesizer()
     //広告使用のため
@@ -100,6 +101,8 @@ struct DailyEnglishApp: App {
     //広告実装のため
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @StateObject private var appState = AppState()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -107,7 +110,11 @@ struct DailyEnglishApp: App {
                 .environmentObject(speechSynthesizer)
                 .environmentObject(admobRef)
                 .environment(\.managedObjectContext, dataController.container.viewContext)
+                .alert("new Version!", isPresented: $appState.versionAlertFlg) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text("これがアラートのメッセージです。")
+                }
         }
-        
     }
 }
