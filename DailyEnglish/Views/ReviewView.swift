@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReviewView: View {
     
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     @FetchRequest(
         sortDescriptors: [],
         predicate: NSPredicate(format: "groupname CONTAINS[cd] %@", "単語")
@@ -44,22 +44,6 @@ struct ReviewView: View {
                         }
                         .frame(maxWidth: .infinity)
                     }
-
-                    
-//                    Button(action: {
-//                        isShowPlay = true
-//                    }, label: {
-//                        Text("お気に入り単語を学習")
-//                            .font(.headline)
-//                            .foregroundStyle(.black)
-//                            .frame(maxWidth: .infinity)
-//                            .frame(minHeight: 50,alignment:.center)
-//                            .background(.yellow)
-//                            .clipShape(.rect(cornerRadius: 10))
-//                    })
-//                    .fullScreenCover(isPresented: $isShowPlay) {
-//                        PlayView(group: dataController.getGroup(groupname: "お気に入り")!)
-//                    }
                     
                     Button(action: {
                         isShowPlay = true
@@ -73,7 +57,7 @@ struct ReviewView: View {
                             .clipShape(.rect(cornerRadius: 10))
                     })
                     .fullScreenCover(isPresented: $isShowPlay) {
-                        PlayViewEX(words: dataController.getFavoriteWords())
+                        PlayViewEX(words: dataManager.getFavoriteWords())
                     }
                     
                 }

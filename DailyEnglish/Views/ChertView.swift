@@ -20,8 +20,6 @@ struct ChertView: View {
     
     var body: some View {
         VStack {
-            Text("成長記録")
-                .font(.title2).bold()
             selectTabs()
             
             switch activeTab {
@@ -34,6 +32,7 @@ struct ChertView: View {
             }
         }
         .navigationTitle("成長記録")
+        .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.mainBackground)
     }

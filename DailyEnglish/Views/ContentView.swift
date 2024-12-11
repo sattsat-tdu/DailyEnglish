@@ -7,19 +7,15 @@
 
 import SwiftUI
 
-enum tabList {
-    case home
-    case chart
-    case dictionary
-    case mypage
-}
+
 
 struct ContentView: View {
     
-//    @AppStorage("isUsedAnki") var isUsedAnki = false
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     @AppStorage("isDarkMode") var isDarkMode = false
     @EnvironmentObject var speechRef: SpeechSynthesizer
+    
+    @State private var selectedTab: TabList = .home
     
     init() {
         //Tab背景色の設定
@@ -34,47 +30,32 @@ struct ContentView: View {
         let window = windowScene?.windows.first
         window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
     }
-    @State var selected = 0
     
     var body: some View {
         NavigationStack {
-            TabView(selection: $selected) {
-                HomeView().tag(0)
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("ホーム")
-                    }
-                
-                //バージョンアプデ対応
-                ChertView().tag(1)
-                    .tabItem {
-                        Image(systemName: "chart.line.uptrend.xyaxis")
-                        Text("成長")
-                        
-                    }
-                DictionaryView().tag(2)
-                    .tabItem {
-                        Image(systemName: "a.book.closed")
-                        Text("NGSL辞書")
-                    }
-                
-                MyPageView().tag(3)
-                    .tabItem {
-                        Image(systemName: "person")
-                        Text("マイページ")
-                    }
+            VStack(spacing: 0) {
+                switch selectedTab {
+                case .home:
+                    HomeView()
+                case .chart:
+                    ChertView()
+                case .dictionary:
+                    DictionaryView()
+                case .mypage:
+                    MyPageView()
+                }
+                CustomTab(selectedTab: $selectedTab)
             }
             .overlay {
                 if speechRef.isLoading {
                     LoadingView(loadingText: "音声を準備中")
                 }
             }
-            .animation(.easeInOut, value: selected)
-            .tint(Color.primary)
+            .animation(.easeInOut, value: selectedTab)
+            .tint(.primary)
             .fullScreenCover(isPresented: $isFirstLaunch) {
                 FirstLaunchView()
             }
-//            .navigationBarHidden(true)
         }
     }
 }

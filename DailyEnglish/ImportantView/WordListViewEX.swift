@@ -83,12 +83,3 @@ struct WordListViewEX: View {
         }
     }
 }
-
-#Preview {
-    let previewContext = DataController().container.viewContext
-    let testGroup = Group(context: previewContext)
-    let words = testGroup.word as? Set<Word> ?? []
-    
-    return WordListViewEX(initWord: words)
-        .environment(\.managedObjectContext, previewContext)
-}

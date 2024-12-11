@@ -1,26 +1,56 @@
 //
-//  DataController.swift
+//  CoreDataManager.swift
 //  DailyEnglish
-//
-//  Created by 石井大翔 on 2023/10/11.
+//  
+//  Created by SATTSAT on 2024/12/10
+//  
 //
 
 import Foundation
 import CoreData
 
-class DataController: ObservableObject {
+final class CoreDataManager: ObservableObject {
+    // シングルトン
+    static let shared = CoreDataManager()
     
-    let container = NSPersistentContainer(name: "DataModel")
-    var saveContext: NSManagedObjectContext
+    private let container = NSPersistentContainer(name: "DataModel")
+    let viewContext: NSManagedObjectContext
     
-    //CoreDataの定義
-    init(){
+    init() {
         container.loadPersistentStores { desc, error in
             if let error = error {
-                print("Failed to load the data \(error.localizedDescription)")
+                fatalError("CoreDataのロードに失敗しました \(error.localizedDescription)")
             }
         }
-        saveContext = container.viewContext
+        viewContext = container.viewContext
+    }
+    
+    @MainActor
+    func fetchWords(predicate: NSPredicate?) async -> [Word] {
+        await viewContext.perform {
+            let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
+            fetchRequest.predicate = predicate
+            do {
+                return try self.viewContext.fetch(fetchRequest)
+            } catch {
+                print("ワードの取得に失敗: \(error)")
+                return []
+            }
+        }
+    }
+    
+    @MainActor
+    func getGroups(predicate: NSPredicate?) async -> [Group] {
+        await viewContext.perform {
+            let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
+            fetchRequest.predicate = predicate
+            do {
+                return try self.viewContext.fetch(fetchRequest)
+            } catch {
+                print("グループのフェッチに失敗: \(error)")
+                return []
+            }
+        }
     }
     
     //CoreDataへ、初期データの代入
@@ -29,7 +59,7 @@ class DataController: ObservableObject {
         let loadgroup = DispatchGroup()
         //単語データの追加
         for group in mainGroups {
-            let newGroup = Group(context: saveContext)
+            let newGroup = Group(context: viewContext)
             newGroup.groupname = group
             loadgroup.enter()
             loadInitWordCSV(setgroup: newGroup, fileName: group, completion: { loadgroup.leave() })
@@ -38,7 +68,7 @@ class DataController: ObservableObject {
         loadgroup.notify(queue: .main) {
             //優先度の高くなく、処理の軽いグループの作成(DisPatch)
             for subGroup in subGroups {
-                let newGroup = Group(context: self.saveContext)
+                let newGroup = Group(context: self.viewContext)
                 newGroup.groupname = subGroup
             }
             self.save()
@@ -52,7 +82,7 @@ class DataController: ObservableObject {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "isfavorite == %@", NSNumber(value: true))
         do {
-            let favoriteWord = try saveContext.fetch(fetchRequest)
+            let favoriteWord = try viewContext.fetch(fetchRequest)
             return Set(favoriteWord)
         } catch {
             print("お気に入り単語が見つかりませんでした。")
@@ -66,7 +96,7 @@ class DataController: ObservableObject {
         fetchRequest.predicate = NSPredicate(format: "groupname == %@", groupname)
         
         do {
-            let targetGroup = try saveContext.fetch(fetchRequest)
+            let targetGroup = try viewContext.fetch(fetchRequest)
             if let group = targetGroup.first, let groupWords = group.word {
                 // Groupに関連付けられたWordのセットを返す
                 return groupWords as? Set<Word> ?? []
@@ -92,34 +122,14 @@ class DataController: ObservableObject {
         fetchRequest.predicate = NSPredicate(format: "(correctedDate >= %@) AND (correctedDate < %@)", daysAgoStartOfDay as NSDate, daysAgoEndOfDay as NSDate)
         print("\(daysAgoStartOfDay)から\(daysAgoEndOfDay)の間")
         do {
-            let TestWord = try saveContext.fetch(fetchRequest)
+            let TestWord = try viewContext.fetch(fetchRequest)
             return Set(TestWord)
         } catch {
             print("お気に入り単語が見つかりませんでした。")
         }
         return Set()
     }
-    
-//    func convertCSVtoWord(csvName: String) -> Set<Word>{
-//        var words: Set<Word> = []
-//        let csvBundle = Bundle.main.path(forResource: csvName, ofType: "csv")
-//        do {
-//            let csvData = try String(contentsOfFile: csvBundle!, encoding: .utf8)
-//            let lineChange = csvData.replacingOccurrences(of: "\r", with: "\n")
-//            var dataArray = lineChange.components(separatedBy: "\n")
-//            dataArray.removeLast()
-//            
-//            for word in dataArray {
-//                let items = word.components(separatedBy: ",")
-//                words.insert(getWord(english: items[0])!)
-//            }
-//            return words
-//            
-//        } catch {
-//            print("convertCSVtoWord関数で、CSVデータの取得に失敗しました")
-//        }
-//        return []
-//    }
+
     func convertCSVtoWord(csvName: String) -> Set<Word> {
         var words: Set<Word> = []
         guard let csvBundle = Bundle.main.path(forResource: csvName, ofType: "csv") else {
@@ -137,7 +147,7 @@ class DataController: ObservableObject {
                 let items = word.components(separatedBy: ",")
                 if let wordObject = getWord(english: items[0]) {
                     // データの完全ロードを保証
-                    let fullyLoadedWord = saveContext.object(with: wordObject.objectID) as! Word
+                    let fullyLoadedWord = viewContext.object(with: wordObject.objectID) as! Word
                     _ = fullyLoadedWord.english  // 強制的にプロパティにアクセスして完全ロード
                     words.insert(fullyLoadedWord)
                 } else {
@@ -157,7 +167,7 @@ class DataController: ObservableObject {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "english == %@", english)
         do {
-            let word = try saveContext.fetch(fetchRequest)
+            let word = try viewContext.fetch(fetchRequest)
             if let targetWord = word.first {
                 return targetWord
             }
@@ -178,12 +188,12 @@ class DataController: ObservableObject {
         fetchRequest.predicate = compoundPredicate
         
         do {
-            let word = try saveContext.fetch(fetchRequest)
+            let word = try viewContext.fetch(fetchRequest)
             if let targetWord = word.first {
                 return targetWord
             } else {
                 //なかったら新規作成
-                let newWord = Word(context: saveContext)
+                let newWord = Word(context: viewContext)
                 newWord.id = UUID()
                 newWord.english = wordData.english
                 newWord.japanese = wordData.japanese
@@ -196,7 +206,7 @@ class DataController: ObservableObject {
     }
     
     func createWord(en: String, jp: String){
-        let newWord = Word(context: saveContext)
+        let newWord = Word(context: viewContext)
         newWord.id = UUID()
         newWord.english = en
         newWord.japanese = jp
@@ -211,9 +221,9 @@ class DataController: ObservableObject {
         let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [enPredicate, posPredicate])
         fetchRequest.predicate = compoundPredicate
         do {
-            let word = try saveContext.fetch(fetchRequest)
+            let word = try viewContext.fetch(fetchRequest)
             if let targetWord = word.first {
-                saveContext.delete(targetWord)
+                viewContext.delete(targetWord)
             }
         } catch {
             print("単語が見つかりませんでした(関数deleteWord)")
@@ -225,7 +235,7 @@ class DataController: ObservableObject {
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "groupname == %@", groupname)
         do {
-            let groups = try saveContext.fetch(fetchRequest)
+            let groups = try viewContext.fetch(fetchRequest)
             if let targetGroup = groups.first {
                 return targetGroup
             }
@@ -238,31 +248,13 @@ class DataController: ObservableObject {
     //CoreDataのセーブ
     func save() {
         do {
-            try saveContext.save()
+            try viewContext.save()
             print("セーブに成功しました。")
         } catch {
             print("セーブに失敗しました。")
         }
     }
     
-//    //デバッグ関数 日付の差を取得する。
-//    func checkWordDate(word: Word){
-//        
-//        let calendar = Calendar.current
-//        if let correctedDate = word.correctedDate{
-//            // Date()からcorrectedDateを引くことで、初めて習得単語になった時の日数の差を取得
-//            let components = calendar.dateComponents([.day], from: correctedDate, to: Date())
-//            // 日数の差を取得
-//            if let days = components.day {
-//                print("日数の差:", days) // 出力: 1
-//            } else {
-//                print("日数の差は取得できませんでした")
-//            }
-//        } else {
-//            print("まだ日付の登録がされていないようです。")
-//        }
-//    }
-//    
     //引数と同じグループ名に保存、もしくは移動
     func moveWordToGroup(targetGroup: String, word: Word?) {
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
@@ -279,7 +271,7 @@ class DataController: ObservableObject {
             
             
             //遷移先グループが前所属と同じならば何もしない。
-            let groups = try saveContext.fetch(fetchRequest)
+            let groups = try viewContext.fetch(fetchRequest)
             if let targetGroup = groups.first,
                word?.group != targetGroup{
                 word?.group = targetGroup
@@ -309,7 +301,7 @@ class DataController: ObservableObject {
                 
                 if items.count >= 5 {
                     //引数で得たGroupに、ワードデータを入れる。
-                    let word = Word(context: saveContext)
+                    let word = Word(context: viewContext)
                     word.id = UUID()
                     word.group = setgroup
                     word.english = items[0]
@@ -332,5 +324,4 @@ class DataController: ObservableObject {
             print("csv load エラー")
         }
     }
-    
 }

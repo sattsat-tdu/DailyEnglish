@@ -17,7 +17,7 @@ struct DictionaryView: View {
     @FocusState var focus:Bool
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             
             searchBar
                 .padding()

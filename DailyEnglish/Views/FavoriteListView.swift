@@ -9,11 +9,11 @@ import SwiftUI
 
 struct FavoriteListView: View {
     
-    @FetchRequest (
+    @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Word.english, ascending: true)],
         predicate: NSPredicate(format: "isfavorite == %@", NSNumber(value: true))
     ) var favoriteWord: FetchedResults<Word>
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     @State private var isShowPlay = false
     
     var body: some View {
@@ -47,7 +47,7 @@ struct FavoriteListView: View {
                     .clipShape(.rect(cornerRadius: 10))
             })
             .fullScreenCover(isPresented: $isShowPlay) {
-                PlayViewEX(words: dataController.getFavoriteWords())
+                PlayViewEX(words: dataManager.getFavoriteWords())
             }
         }
         .padding()

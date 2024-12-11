@@ -23,7 +23,7 @@ class SpeechDelegate: NSObject, AVSpeechSynthesizerDelegate {
 struct PlaySoundView: View {
     
     @Binding var isShowPlaySound : Bool
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     let group: Group
     let listeningInfo: ListeningInfo
     @State private var words: Set<Word> = []
@@ -126,9 +126,9 @@ struct PlaySoundView: View {
                         if groupname.contains("単語") {
                             words = group.word as? Set<Word> ?? []
                         } else if groupname == "お気に入り" {
-                            words = dataController.getFavoriteWords()
+                            words = dataManager.getFavoriteWords()
                         } else {
-                            words = dataController.convertCSVtoWord(csvName: groupname)
+                            words = dataManager.convertCSVtoWord(csvName: groupname)
                         }
                     }
                     //そのGroupに単語が存在しなければViewを閉じる
@@ -244,16 +244,4 @@ struct PlaySoundView: View {
         isHiddenENSentence = true
         isHiddenJPSentence = true
     }
-}
-
-#Preview {
-    let previewContext = DataController().container.viewContext
-    let testGroup = Group(context: previewContext)
-    testGroup.groupname = "Part0 テスト単語"
-    testGroup.total = 3264
-    
-    return PlaySoundView(
-        isShowPlaySound: .constant(true),
-        group: testGroup,
-        listeningInfo: ListeningInfo())
 }

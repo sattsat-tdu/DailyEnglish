@@ -13,7 +13,6 @@
 		001523632AD6929E00C15ED2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001523622AD6929E00C15ED2 /* Assets.xcassets */; };
 		001523662AD6929E00C15ED2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 001523652AD6929E00C15ED2 /* Preview Assets.xcassets */; };
 		0015236F2AD6951600C15ED2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0015236D2AD6951600C15ED2 /* DataModel.xcdatamodeld */; };
-		001523712AD6955E00C15ED2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523702AD6955E00C15ED2 /* DataController.swift */; };
 		001523A22AD8B75100C15ED2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523A12AD8B75100C15ED2 /* HomeView.swift */; };
 		001523A42AD8B76D00C15ED2 /* ChertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523A32AD8B76C00C15ED2 /* ChertView.swift */; };
 		001523A62AD8B78700C15ED2 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523A52AD8B78700C15ED2 /* DictionaryView.swift */; };
@@ -66,6 +65,10 @@
 		00B3B8E52B1DDB4C0043BC60 /* aboutDandaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B3B8E42B1DDB4C0043BC60 /* aboutDandaiView.swift */; };
 		00C60FA32BE3EAE100CCB8D2 /* GraphViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C60FA22BE3EAE100CCB8D2 /* GraphViewer.swift */; };
 		00D44C862B156FD10066CD4B /* editFolderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D44C852B156FD10066CD4B /* editFolderPage.swift */; };
+		00F8D7102D084FA7008EB03B /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */; };
+		00F8D7152D087CEC008EB03B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D7142D087CE6008EB03B /* CoreDataManager.swift */; };
+		00F8D7172D090685008EB03B /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D7162D090685008EB03B /* CustomTab.swift */; };
+		00F8D71B2D0952B2008EB03B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D71A2D0952AE008EB03B /* AppState.swift */; };
 		739ECE5F64D264067C01EE73 /* Pods_DailyEnglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +80,6 @@
 		001523622AD6929E00C15ED2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		001523652AD6929E00C15ED2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0015236E2AD6951600C15ED2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		001523702AD6955E00C15ED2 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		001523A12AD8B75100C15ED2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		001523A32AD8B76C00C15ED2 /* ChertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChertView.swift; sourceTree = "<group>"; };
 		001523A52AD8B78700C15ED2 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,10 @@
 		00B3B8E42B1DDB4C0043BC60 /* aboutDandaiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutDandaiView.swift; sourceTree = "<group>"; };
 		00C60FA22BE3EAE100CCB8D2 /* GraphViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewer.swift; sourceTree = "<group>"; };
 		00D44C852B156FD10066CD4B /* editFolderPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editFolderPage.swift; sourceTree = "<group>"; };
+		00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		00F8D7142D087CE6008EB03B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		00F8D7162D090685008EB03B /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
+		00F8D71A2D0952AE008EB03B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		770E00210745F6B937BB8164 /* Pods-DailyEnglish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyEnglish.release.xcconfig"; path = "Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish.release.xcconfig"; sourceTree = "<group>"; };
 		9DF66CBA68865CFB8695124D /* Pods-DailyEnglish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyEnglish.debug.xcconfig"; path = "Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish.debug.xcconfig"; sourceTree = "<group>"; };
 		ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyEnglish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,7 +175,8 @@
 		0015235D2AD6929C00C15ED2 /* DailyEnglish */ = {
 			isa = PBXGroup;
 			children = (
-				0015235E2AD6929C00C15ED2 /* DailyEnglishApp.swift */,
+				00F8D7182D095272008EB03B /* Application */,
+				00F8D7132D087CDD008EB03B /* Managers */,
 				0082949F2D05EECC0052A876 /* Extensions */,
 				00F8D70E2D084D77008EB03B /* Models */,
 				00F8D70C2D084D5C008EB03B /* ViewModels */,
@@ -196,8 +203,6 @@
 		0015236C2AD6935F00C15ED2 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				0015236D2AD6951600C15ED2 /* DataModel.xcdatamodeld */,
-				001523702AD6955E00C15ED2 /* DataController.swift */,
 				00A7B79D2AEE28B000F768AA /* SoundViewModel.swift */,
 				0063B52E2AFB21BA00738D5F /* MyWordViewModel.swift */,
 				001523C92ADA2AAB00C15ED2 /* StructData.swift */,
@@ -325,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				001523C62ADA1D9700C15ED2 /* CellView */,
+				00F8D7162D090685008EB03B /* CustomTab.swift */,
 			);
 			path = ViewParts;
 			sourceTree = "<group>";
@@ -332,8 +338,27 @@
 		00F8D70E2D084D77008EB03B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0015236D2AD6951600C15ED2 /* DataModel.xcdatamodeld */,
+				00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		00F8D7132D087CDD008EB03B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				00F8D7142D087CE6008EB03B /* CoreDataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		00F8D7182D095272008EB03B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				00F8D71A2D0952AE008EB03B /* AppState.swift */,
+				0015235E2AD6929C00C15ED2 /* DailyEnglishApp.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		C32183A6A41E73976019696E /* Pods */ = {
@@ -498,19 +523,21 @@
 				00D44C862B156FD10066CD4B /* editFolderPage.swift in Sources */,
 				00A400552AEBBB9900856A2F /* ButtonWithImage.swift in Sources */,
 				001523B02AD90DE300C15ED2 /* LoadingView.swift in Sources */,
+				00F8D7152D087CEC008EB03B /* CoreDataManager.swift in Sources */,
 				00B3B8E52B1DDB4C0043BC60 /* aboutDandaiView.swift in Sources */,
 				001523CA2ADA2AAB00C15ED2 /* StructData.swift in Sources */,
 				0015236F2AD6951600C15ED2 /* DataModel.xcdatamodeld in Sources */,
 				001523CE2ADACA4C00C15ED2 /* WordListView.swift in Sources */,
 				008493642BDDB8B600A20B85 /* WordListViewEX.swift in Sources */,
 				00A7B79E2AEE28B000F768AA /* SoundViewModel.swift in Sources */,
+				00F8D71B2D0952B2008EB03B /* AppState.swift in Sources */,
 				001523C82ADA1E7600C15ED2 /* WordCell.swift in Sources */,
 				00184C682AE3F622002A6DD5 /* ReviewView.swift in Sources */,
-				001523712AD6955E00C15ED2 /* DataController.swift in Sources */,
 				001523C42ADA054300C15ED2 /* TicketView.swift in Sources */,
 				001523CC2ADA2B9000C15ED2 /* GroupCell.swift in Sources */,
 				008493672BE2202600A20B85 /* ColorModel.swift in Sources */,
 				001523BE2AD9892200C15ED2 /* StudyWordView.swift in Sources */,
+				00F8D7102D084FA7008EB03B /* UserDefaultsKeys.swift in Sources */,
 				008912382AE80721006BC899 /* SafariView.swift in Sources */,
 				001523C22AD98C0C00C15ED2 /* StudySettingView.swift in Sources */,
 				001523C02AD98BF400C15ED2 /* StudySoundView.swift in Sources */,
@@ -528,6 +555,7 @@
 				001523A22AD8B75100C15ED2 /* HomeView.swift in Sources */,
 				008294A12D05EED40052A876 /* View+Extensions.swift in Sources */,
 				000721FB2AE3ADB50082E903 /* chatKunView.swift in Sources */,
+				00F8D7172D090685008EB03B /* CustomTab.swift in Sources */,
 				0015235F2AD6929C00C15ED2 /* DailyEnglishApp.swift in Sources */,
 				00C60FA32BE3EAE100CCB8D2 /* GraphViewer.swift in Sources */,
 			);

@@ -90,8 +90,7 @@ struct DailyEnglishApp: App {
                              onClicked: {print("こんにちはははははあ")})
         }
     }
-    //CoreData参照のため
-    @StateObject private var dataController = DataController()
+
     //音声、効果音再生のため
     @StateObject private var speechSynthesizer = SpeechSynthesizer()
     //広告使用のため
@@ -100,14 +99,22 @@ struct DailyEnglishApp: App {
     //広告実装のため
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @StateObject private var appState = AppState()
+    
+    @StateObject private var coreDataManager = CoreDataManager.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(dataController)
+                .environmentObject(coreDataManager)
                 .environmentObject(speechSynthesizer)
                 .environmentObject(admobRef)
-                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environment(\.managedObjectContext, coreDataManager.viewContext)
+                .alert("new Version!", isPresented: $appState.versionAlertFlg) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text("これがアラートのメッセージです。")
+                }
         }
-        
     }
 }

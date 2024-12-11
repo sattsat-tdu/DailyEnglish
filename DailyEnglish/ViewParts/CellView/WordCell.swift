@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WordCell: View {
     
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     @EnvironmentObject var speechRef: SpeechSynthesizer
     let word: Word
     private let height = UIScreen.main.bounds.height / 6
@@ -53,7 +53,7 @@ struct WordCell: View {
                     Button(action: {
                         isFavorite.toggle()
                         word.isfavorite = isFavorite
-                        dataController.save()
+                        dataManager.save()
                     }, label: {
                         Image(systemName: isFavorite ? "star.circle.fill" : "star.circle")
                             .resizable()
@@ -101,8 +101,8 @@ struct WordCell: View {
             //My単語帳で作成した単語なら削除可能
             if word.pos == nil {
                 Button {
-                    dataController.saveContext.delete(word)
-                    dataController.save()
+                    dataManager.viewContext.delete(word)
+                    dataManager.save()
                 } label: {
                     Image(systemName: "xmark")
                         .resizable()
@@ -125,19 +125,4 @@ struct WordCell: View {
             isFavorite = word.isfavorite
         }
     }
-}
-
-#Preview {
-    let previewContext = DataController().container.viewContext
-    let testWord = Word(context: previewContext)
-    testWord.english = "test"
-    testWord.japanese = "テスト"
-    testWord.pos = "名詞"
-    testWord.ensentence = "I have a test"
-    testWord.jpsentence = "テストがあります。"
-    testWord.isfavorite = false
-    
-    return WordCell(word: testWord)
-        .environment(\.managedObjectContext, previewContext)
-        .environmentObject(SpeechSynthesizer())
 }

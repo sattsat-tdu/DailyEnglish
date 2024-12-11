@@ -9,7 +9,7 @@ import SwiftUI
 
 struct forgettingCurveView: View {
     
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     
     @State private var oneDayWord: Set<Word> = []
     @State private var sevenDaysWord: Set<Word> = []
@@ -57,9 +57,9 @@ struct forgettingCurveView: View {
             .padding()
         }
         .onAppear {
-            oneDayWord = dataController.getTestWords(daysago: 1)
-            sevenDaysWord = dataController.getTestWords(daysago: 7)
-            thirtyDaysWord = dataController.getTestWords(daysago: 30)
+            oneDayWord = dataManager.getTestWords(daysago: 1)
+            sevenDaysWord = dataManager.getTestWords(daysago: 7)
+            thirtyDaysWord = dataManager.getTestWords(daysago: 30)
         }
         .background(.mainBackground)
     }
@@ -139,7 +139,5 @@ struct daysAgoView: View {
 
 #Preview {
     ChertView()
-        .environmentObject(DataController())
-//    forgettingCurveView()
-//        .environmentObject(DataController())
+        .environmentObject(CoreDataManager.shared)
 }

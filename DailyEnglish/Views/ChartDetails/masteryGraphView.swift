@@ -10,7 +10,7 @@ import Charts
 
 struct masteryGraphView: View {
     
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     @FetchRequest(
         sortDescriptors: [],
         predicate: NSPredicate(format: "groupname CONTAINS[cd] %@", "単語")
