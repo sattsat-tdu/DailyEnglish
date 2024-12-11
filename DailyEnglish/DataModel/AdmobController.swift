@@ -26,7 +26,7 @@ import SwiftUI
 
 //バナー処理、Viewにて直接よぶ
 struct AdBannerView: UIViewRepresentable {
-    let bannerID: String = "ca-app-pub-7618656440774198/2268426336"
+    let bannerID: String = "ca-app-pub-3940256099942544/2934735716"
 
     func makeUIView(context: Context) -> GADBannerView {
         let bannerView = GADBannerView(adSize: GADAdSizeFromCGSize(CGSize(width: 320, height: 50))) // Set your desired banner ad size
@@ -50,8 +50,8 @@ class AdmobController: NSObject,GADFullScreenContentDelegate,  ObservableObject 
     var interstitialAd: GADInterstitialAd?
     var rewardedAd: GADRewardedAd?
     
-    let interstitialID = "ca-app-pub-7618656440774198/2584193245"
-    let rewardID = "ca-app-pub-7618656440774198/3705703221"
+    let interstitialID = "ca-app-pub-3940256099942544/4411468910"
+    let rewardID = "ca-app-pub-3940256099942544/1712485313"
     
     override init() {
         super.init()
