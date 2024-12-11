@@ -86,13 +86,3 @@ struct WordListView: View {
         .background(.mainBackground)
     }
 }
-
-#Preview {
-    let previewContext = DataController().container.viewContext
-    let testGroup = Group(context: previewContext)
-    testGroup.groupname = "Part0 テスト単語"
-    testGroup.total = 3264
-    
-    return WordListView(group: testGroup)
-        .environment(\.managedObjectContext, previewContext)
-}

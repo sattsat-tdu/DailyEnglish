@@ -24,7 +24,7 @@ struct MyWordView: View {
 }
 struct FileView: View {
     
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     @EnvironmentObject var myWordRef: MyWordViewModel
     @State private var isShowAlert = false
     @State private var fileText = ""
@@ -43,7 +43,7 @@ struct FileView: View {
         var wordSet = Set<Word>() // 空のセットを初期化
         if let myWordArray = folder.myWord {
             for wordInfo in myWordArray {
-                if let word: Word = dataController.getMyWord(wordData: wordInfo) {
+                if let word: Word = dataManager.getMyWord(wordData: wordInfo) {
                     wordSet.insert(word) // セットに要素を追加
                 }
             }
@@ -150,7 +150,7 @@ struct FileView: View {
                                     folder.myWord?.append(myWord)
                                     myWordRef.saveFileToDocument()
                                     //CoreData Wordを作成
-                                    dataController.createWord(en: myWord.english, jp: myWord.japanese)
+                                    dataManager.createWord(en: myWord.english, jp: myWord.japanese)
                                 })
                         }
                         
@@ -251,7 +251,7 @@ struct FileView: View {
     //リスト、削除するための関数,CoreDataからも消去
     func delete(at offsets: IndexSet) {
         let deleteEN = folder.myWord?[offsets.first!]
-        dataController.deleteWord(en: deleteEN?.english ?? "")
+        dataManager.deleteWord(en: deleteEN?.english ?? "")
         folder.myWord?.remove(atOffsets: offsets)
         myWordRef.saveFileToDocument()
     }

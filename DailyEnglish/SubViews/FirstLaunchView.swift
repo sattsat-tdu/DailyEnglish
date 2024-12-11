@@ -11,7 +11,7 @@ import AppTrackingTransparency
 struct FirstLaunchView: View {
     
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     @State private var isLoading = false
     let walkthroughImage = ["Walkthrough1",
                             "Walkthrough2",
@@ -42,7 +42,7 @@ struct FirstLaunchView: View {
                 Button(action: {
                     if currentPage == walkthroughImage.count - 1 {
                         isLoading = true
-                        dataController.saveInitData(finishImportWords: {
+                        dataManager.saveInitData(finishImportWords: {
                             isLoading = false
                             isFirstLaunch = false
 //                            isBonusViewPresented = true

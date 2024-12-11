@@ -27,8 +27,7 @@ enum LevelOfMastery: String, CaseIterable {
 
 
 struct PlayViewEX: View {
-    //dataControllerのリファレンス
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var dataManager: CoreDataManager
     //前の画面に戻るため。
     @Environment(\.presentationMode) private var presentationMode
     //発音させるためのViewModelを取得。
@@ -373,7 +372,7 @@ struct PlayViewEX: View {
                             onClicked: {
                                 isfavorite.toggle()
                                 selectedWord?.isfavorite = isfavorite
-                                dataController.save()
+                                dataManager.save()
                             })
                         ButtonWithImage(
                             text: quizCount == numberOfPlay ? "解説へ" : "次の問題へ",
@@ -508,7 +507,7 @@ struct PlayViewEX: View {
                                 //NGSL単語学習をする場合はwordsからgroupnameを取得
                                 if isNGSLWords {
                                     if let words = words {
-                                        PlayViewEX(words: dataController.getGroupWords(groupname: words.first?.group?.groupname ?? "Part3 Words"))
+                                        PlayViewEX(words: dataManager.getGroupWords(groupname: words.first?.group?.groupname ?? "Part3 Words"))
                                     }
                                 } else {
                                     PlayViewEX(words:words)
@@ -553,7 +552,6 @@ struct PlayViewEX: View {
             if words.isEmpty {
                 //trueの場合は強制プレイしたいところだがエラーのため一旦断念,part3から出題
                 if isNGSLWords {
-//                    playWords = dataController.convertCSVtoWord(csvName: "Part3 words")
                     AlertKitAPI.present(
                         title: "全て学習済みです。",
                         icon: .error,
@@ -612,10 +610,10 @@ struct PlayViewEX: View {
                 speechRef.effectPlay(name: "correctSound")
                 correctWords.insert(selectedWord!)
                 if groupname == "微妙単語"{
-                    dataController.moveWordToGroup(targetGroup: "習得単語", word: selectedWord)
+                    dataManager.moveWordToGroup(targetGroup: "習得単語", word: selectedWord)
                     
                 } else if groupname == "苦手単語"{
-                    dataController.moveWordToGroup(targetGroup: "微妙単語", word: selectedWord)
+                    dataManager.moveWordToGroup(targetGroup: "微妙単語", word: selectedWord)
                     
                 }
             case .subtleWord:
@@ -623,7 +621,7 @@ struct PlayViewEX: View {
                 incorrectWords.insert(selectedWord!)
                 
             case .badWord:
-                dataController.moveWordToGroup(targetGroup: "苦手単語", word: selectedWord)
+                dataManager.moveWordToGroup(targetGroup: "苦手単語", word: selectedWord)
                 speechRef.effectPlay(name: "inCorrectSound")
                 incorrectWords.insert(selectedWord!)
             }
@@ -633,21 +631,21 @@ struct PlayViewEX: View {
             case .goodWord:
                 if !isReviewMode {
                     print("正解したからここに来るはず")
-                    dataController.moveWordToGroup(targetGroup: "習得単語", word: selectedWord)
+                    dataManager.moveWordToGroup(targetGroup: "習得単語", word: selectedWord)
                 }
                 speechRef.effectPlay(name: "correctSound")
                 correctWords.insert(selectedWord!)
                 
             case .subtleWord:
                 if !isReviewMode{
-                    dataController.moveWordToGroup(targetGroup: "微妙単語", word: selectedWord)
+                    dataManager.moveWordToGroup(targetGroup: "微妙単語", word: selectedWord)
                 }
                 speechRef.effectPlay(name: "uncertainSound")
                 incorrectWords.insert(selectedWord!)
                 
             case .badWord:
                 if !isReviewMode {
-                    dataController.moveWordToGroup(targetGroup: "苦手単語", word: selectedWord)
+                    dataManager.moveWordToGroup(targetGroup: "苦手単語", word: selectedWord)
                 }
                 speechRef.effectPlay(name: "inCorrectSound")
                 incorrectWords.insert(selectedWord!)
@@ -756,30 +754,4 @@ struct PlayViewEX: View {
         }
         return message
     }
-}
-
-
-
-
-
-
-
-
-#Preview {
-    let previewContext = DataController().container.viewContext
-    let testGroup = Group(context: previewContext)
-    testGroup.groupname = "Part0 テスト単語"
-    testGroup.total = 3264
-    let testWord = Word(context: previewContext)
-    testWord.id = UUID()
-    testWord.english = "test"
-    testWord.japanese = "テスト"
-    testWord.pos = "名詞"
-    testWord.ensentence = "I have a test"
-    testWord.jpsentence = "テストがあります。"
-    testWord.group = testGroup
-    
-    return PlayViewEX(words: testGroup.word as? Set<Word>)
-        .environment(\.managedObjectContext, previewContext)
-    
 }
