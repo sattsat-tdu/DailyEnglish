@@ -32,6 +32,7 @@
 		001523CC2ADA2B9000C15ED2 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523CB2ADA2B9000C15ED2 /* GroupCell.swift */; };
 		001523CE2ADACA4C00C15ED2 /* WordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001523CD2ADACA4C00C15ED2 /* WordListView.swift */; };
 		00184C682AE3F622002A6DD5 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00184C672AE3F622002A6DD5 /* ReviewView.swift */; };
+		004F9BFC2D0A806000CC9A57 /* UDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F9BFB2D0A806000CC9A57 /* UDManager.swift */; };
 		0063B52C2AF5F56F00738D5F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0063B52B2AF5F56F00738D5F /* AlertKit */; };
 		0063B52F2AFB21BA00738D5F /* MyWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063B52E2AFB21BA00738D5F /* MyWordViewModel.swift */; };
 		0063B5312AFBA7EA00738D5F /* CreateWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063B5302AFBA7EA00738D5F /* CreateWordView.swift */; };
@@ -100,6 +101,7 @@
 		001523CD2ADACA4C00C15ED2 /* WordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListView.swift; sourceTree = "<group>"; };
 		00184C672AE3F622002A6DD5 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		0020359E2AF4CD8C0036FAC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		004F9BFB2D0A806000CC9A57 /* UDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDManager.swift; sourceTree = "<group>"; };
 		0063B52E2AFB21BA00738D5F /* MyWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewModel.swift; sourceTree = "<group>"; };
 		0063B5302AFBA7EA00738D5F /* CreateWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWordView.swift; sourceTree = "<group>"; };
 		0078E0EB2BE914D600E61732 /* PlayViewEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewEX.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		00F8D7132D087CDD008EB03B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				004F9BFB2D0A806000CC9A57 /* UDManager.swift */,
 				00F8D7142D087CE6008EB03B /* CoreDataManager.swift */,
 			);
 			path = Managers;
@@ -517,6 +520,7 @@
 				001523A62AD8B78700C15ED2 /* DictionaryView.swift in Sources */,
 				001523AA2AD8C34B00C15ED2 /* MyWordView.swift in Sources */,
 				0063B5312AFBA7EA00738D5F /* CreateWordView.swift in Sources */,
+				004F9BFC2D0A806000CC9A57 /* UDManager.swift in Sources */,
 				001523A82AD8B7A000C15ED2 /* MyPageView.swift in Sources */,
 				008493602BDB80D200A20B85 /* ngslGraphView.swift in Sources */,
 				0078E0EE2BEF729F00E61732 /* FavoriteListView.swift in Sources */,

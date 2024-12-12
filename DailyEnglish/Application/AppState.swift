@@ -1,18 +1,38 @@
 //
 //  AppState.swift
 //  DailyEnglish
-//  
+//
 //  Created by SATTSAT on 2024/12/11
-//  
+//
 //
 
 import SwiftUI
 
 class AppState: ObservableObject {
     @Published var versionAlertFlg = false
+    private let UD = UDManager.shared
     
     init() {
-        checkVersionUpdate()
+//        checkUserState()
+//        checkVersionUpdate()
+    }
+    
+    //ユーザーが初回起動なのかを確認
+    private func checkUserState() {
+        //バージョン更新前へ、引き継ぎを行う
+        if UD.existsStringKey("isFirstLaunch") {
+            UD.set(true, forKey: AppStateKeys.didCompleteFirstLaunch)
+        }
+        
+        guard let didCompleteFirstLaunch = UD.get(forKey: AppStateKeys.didCompleteFirstLaunch) as Bool? else {
+            return
+        }
+        
+        if didCompleteFirstLaunch {
+            print("起動済みです")
+        } else {
+            print("初めての起動です")
+        }
     }
 
     //バージョンの差異を確認、バージョンが異なれば更新Viewの表示
