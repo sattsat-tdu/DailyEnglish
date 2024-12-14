@@ -18,7 +18,7 @@ struct GroupCell: View {
     init(group: Group) {
         self.group = group
         count = Int16(group.word?.count ?? 0)
-        groupName = group.groupname ?? ""
+        groupName = group.name ?? ""
     }
     
     var body: some View {
@@ -32,7 +32,7 @@ struct GroupCell: View {
             VStack(alignment: .leading) {
                 ZStack {
                     if groupName.contains("Part") {
-                        Text("\(group.total - count) / \(group.total) 学習済み")
+                        Text("\(group.wordCount - count) / \(group.wordCount) 学習済み")
                         
                     } else {
                         Text("\(count) 単語")
@@ -79,10 +79,10 @@ struct GroupCell: View {
                 if let word = group.word {
                     PlayViewEX(
                         words: word as? Set<Word>,
-                        isNGSLWords: group.groupname?.contains("Part") ?? false)
+                        isNGSLWords: group.name?.contains("Part") ?? false)
                 } else {
                     PlayViewEX(words: [],
-                               isNGSLWords: group.groupname?.contains("Part") ?? false)
+                               isNGSLWords: group.name?.contains("Part") ?? false)
                 }
 
             }
@@ -95,17 +95,4 @@ struct GroupCell: View {
         .padding(.horizontal)
         .itemStyle()
     }
-}
-
-import CoreData
-#Preview {
-    let container = NSPersistentContainer(name: "DataModel")
-    let context = container.viewContext
-    
-    let testGroup = Group(context: context)
-    testGroup.groupname = "Part0 テスト単語"
-    testGroup.total = 3264
-    
-    return GroupCell(group: testGroup)
-        .environment(\.managedObjectContext, context)
 }

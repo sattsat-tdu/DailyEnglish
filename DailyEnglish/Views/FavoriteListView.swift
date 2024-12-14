@@ -11,7 +11,7 @@ struct FavoriteListView: View {
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Word.english, ascending: true)],
-        predicate: NSPredicate(format: "isfavorite == %@", NSNumber(value: true))
+        predicate: NSPredicate(format: "isBookmark == %@", NSNumber(value: true))
     ) var favoriteWord: FetchedResults<Word>
     @EnvironmentObject var dataManager: CoreDataManager
     @State private var isShowPlay = false

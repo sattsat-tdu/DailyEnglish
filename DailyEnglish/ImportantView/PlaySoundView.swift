@@ -122,7 +122,7 @@ struct PlaySoundView: View {
             LoadingView(loadingText: "音声を準備中...")
                 .onAppear {
                     //単語とついていたら通常通りwordから取得
-                    if let groupname = group.groupname {
+                    if let groupname = group.name {
                         if groupname.contains("単語") {
                             words = group.word as? Set<Word> ?? []
                         } else if groupname == "お気に入り" {

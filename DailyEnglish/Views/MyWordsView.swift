@@ -11,7 +11,7 @@ import SwiftUI
 struct MyWordsView: View {
     
     @FetchRequest(
-        sortDescriptors: [SortDescriptor(\.groupname)]
+        sortDescriptors: [SortDescriptor(\.name)]
     ) var groups: FetchedResults<Group>
     
     var body: some View {

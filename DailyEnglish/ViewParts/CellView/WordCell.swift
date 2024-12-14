@@ -14,7 +14,7 @@ struct WordCell: View {
     let word: Word
     private let height = UIScreen.main.bounds.height / 6
     @State private var isShowMoreSentence = false
-    @State private var isFavorite = false
+    @State private var isBookmark = false
     @State private var isSafariViewPresented = false
     private let urlString: String
     
@@ -51,11 +51,11 @@ struct WordCell: View {
                         .font(.headline)
                     Spacer()
                     Button(action: {
-                        isFavorite.toggle()
-                        word.isfavorite = isFavorite
+                        isBookmark.toggle()
+                        word.isBookmark = isBookmark
                         dataManager.save()
                     }, label: {
-                        Image(systemName: isFavorite ? "star.circle.fill" : "star.circle")
+                        Image(systemName: isBookmark ? "star.circle.fill" : "star.circle")
                             .resizable()
                             .frame(width: 30, height:30)
                     })
@@ -122,7 +122,7 @@ struct WordCell: View {
             isShowMoreSentence.toggle()
         }
         .onAppear {
-            isFavorite = word.isfavorite
+            isBookmark = word.isBookmark
         }
     }
 }

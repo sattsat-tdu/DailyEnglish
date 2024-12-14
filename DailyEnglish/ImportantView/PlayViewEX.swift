@@ -61,7 +61,7 @@ struct PlayViewEX: View {
     //選択された問題をその都度格納
     @State private var selectedWord: Word?
     //単語がお気に入り単語なのかを取得
-    @State private var isfavorite = false
+    @State private var isBookmark = false
     //出題、答え、結果の三つの状態を管理する変数
     @State private var viewSwitcher:Viewswitcher = .question
     //問題回答数を管理する変数
@@ -366,12 +366,12 @@ struct PlayViewEX: View {
                         }
                         //お気に入りに追加ボタン
                         ButtonWithImage(
-                            text:isfavorite ? "削除" : "追加",
-                            imageName: isfavorite ? "star.fill" : "star",
+                            text:isBookmark ? "削除" : "追加",
+                            imageName: isBookmark ? "star.fill" : "star",
                             color: .yellow,
                             onClicked: {
-                                isfavorite.toggle()
-                                selectedWord?.isfavorite = isfavorite
+                                isBookmark.toggle()
+                                selectedWord?.isBookmark = isBookmark
                                 dataManager.save()
                             })
                         ButtonWithImage(
@@ -507,7 +507,7 @@ struct PlayViewEX: View {
                                 //NGSL単語学習をする場合はwordsからgroupnameを取得
                                 if isNGSLWords {
                                     if let words = words {
-                                        PlayViewEX(words: dataManager.getGroupWords(groupname: words.first?.group?.groupname ?? "Part3 Words"))
+                                        PlayViewEX(words: dataManager.getGroupWords(groupname: words.first?.group?.name ?? "Part3 Words"))
                                     }
                                 } else {
                                     PlayViewEX(words:words)
@@ -593,7 +593,7 @@ struct PlayViewEX: View {
                 choicesWords = getRandomWordFromCSV(selectedWord: selectedWord)
                 //tatoebaサイトの準備
                 urlString = "https://tatoeba.org/ja/sentences/search?from=eng&query=\(selectedWord?.english ?? "")&to=jpn"
-                isfavorite = selectedWord?.isfavorite ?? false
+                isBookmark = selectedWord?.isBookmark ?? false
                 remainingTime = studyInfo.timeLimit
             }
         }
@@ -603,7 +603,7 @@ struct PlayViewEX: View {
     func moveWord(destination: LevelOfMastery){
         // 復習問題を学習中であったらif以下を実行
         // 微妙単語を正解したら習得単語に、苦手単語→微妙単語に移動
-        if !isNGSLWords, let groupname = selectedWord?.group?.groupname {
+        if !isNGSLWords, let groupname = selectedWord?.group?.name {
             switch destination{
                 
             case .goodWord:
@@ -686,7 +686,7 @@ struct PlayViewEX: View {
         choicesWords = getRandomWordFromCSV(selectedWord: selectedWord)
         //tatoebaサイトの準備
         urlString = "https://tatoeba.org/ja/sentences/search?from=eng&query=\(selectedWord?.english ?? "")&to=jpn"
-        isfavorite = selectedWord?.isfavorite ?? false
+        isBookmark = selectedWord?.isBookmark ?? false
         viewSwitcher = .question
     }
     
