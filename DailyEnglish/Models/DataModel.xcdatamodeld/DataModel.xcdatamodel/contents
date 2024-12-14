@@ -3,7 +3,7 @@
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" elementID="groupname"/>
         <attribute name="wordCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" elementID="total"/>
-        <relationship name="word" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="group" inverseEntity="Word"/>
+        <relationship name="word" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Word" inverseName="group" inverseEntity="Word"/>
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
         <attribute name="correctedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
