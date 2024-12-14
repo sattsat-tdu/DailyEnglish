@@ -80,7 +80,7 @@ struct StudyWordView: View {
     
     private var folderList: some View {
         VStack(spacing: 16) {
-            ForEach(mainGroup, id: \.id) { group in
+            ForEach(mainGroup, id: \.self) { group in
                 GroupCell(group: group)
             }
         }

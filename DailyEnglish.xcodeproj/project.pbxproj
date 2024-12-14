@@ -34,6 +34,7 @@
 		00184C682AE3F622002A6DD5 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00184C672AE3F622002A6DD5 /* ReviewView.swift */; };
 		004F9BFC2D0A806000CC9A57 /* UDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F9BFB2D0A806000CC9A57 /* UDManager.swift */; };
 		004F9BFE2D0D9F7200CC9A57 /* MyWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F9BFD2D0D9F7200CC9A57 /* MyWordsView.swift */; };
+		004F9C012D0DB7DA00CC9A57 /* CoreDataVer1toVer2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 004F9C002D0DB7DA00CC9A57 /* CoreDataVer1toVer2.xcmappingmodel */; };
 		0063B52C2AF5F56F00738D5F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0063B52B2AF5F56F00738D5F /* AlertKit */; };
 		0063B52F2AFB21BA00738D5F /* MyWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063B52E2AFB21BA00738D5F /* MyWordViewModel.swift */; };
 		0063B5312AFBA7EA00738D5F /* CreateWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063B5302AFBA7EA00738D5F /* CreateWordView.swift */; };
@@ -104,6 +105,8 @@
 		0020359E2AF4CD8C0036FAC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		004F9BFB2D0A806000CC9A57 /* UDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDManager.swift; sourceTree = "<group>"; };
 		004F9BFD2D0D9F7200CC9A57 /* MyWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordsView.swift; sourceTree = "<group>"; };
+		004F9BFF2D0DB48900CC9A57 /* DataModel ver2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel ver2.xcdatamodel"; sourceTree = "<group>"; };
+		004F9C002D0DB7DA00CC9A57 /* CoreDataVer1toVer2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = CoreDataVer1toVer2.xcmappingmodel; sourceTree = "<group>"; };
 		0063B52E2AFB21BA00738D5F /* MyWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewModel.swift; sourceTree = "<group>"; };
 		0063B5302AFBA7EA00738D5F /* CreateWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWordView.swift; sourceTree = "<group>"; };
 		0078E0EB2BE914D600E61732 /* PlayViewEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewEX.swift; sourceTree = "<group>"; };
@@ -344,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				0015236D2AD6951600C15ED2 /* DataModel.xcdatamodeld */,
+				004F9C002D0DB7DA00CC9A57 /* CoreDataVer1toVer2.xcmappingmodel */,
 				00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */,
 			);
 			path = Models;
@@ -521,6 +525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				001523A62AD8B78700C15ED2 /* DictionaryView.swift in Sources */,
+				004F9C012D0DB7DA00CC9A57 /* CoreDataVer1toVer2.xcmappingmodel in Sources */,
 				001523AA2AD8C34B00C15ED2 /* MyWordView.swift in Sources */,
 				0063B5312AFBA7EA00738D5F /* CreateWordView.swift in Sources */,
 				004F9BFC2D0A806000CC9A57 /* UDManager.swift in Sources */,
@@ -811,9 +816,10 @@
 		0015236D2AD6951600C15ED2 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				004F9BFF2D0DB48900CC9A57 /* DataModel ver2.xcdatamodel */,
 				0015236E2AD6951600C15ED2 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 0015236E2AD6951600C15ED2 /* DataModel.xcdatamodel */;
+			currentVersion = 004F9BFF2D0DB48900CC9A57 /* DataModel ver2.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

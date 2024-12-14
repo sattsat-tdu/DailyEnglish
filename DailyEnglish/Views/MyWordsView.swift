@@ -17,7 +17,7 @@ struct MyWordsView: View {
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(groups, id: \.id) { group in
+                ForEach(groups, id: \.self) { group in
                     GroupCell(group: group)
                 }
             }
