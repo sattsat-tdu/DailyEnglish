@@ -27,6 +27,13 @@ struct HomeView: View {
                         
                         reviewBox
                         
+                        //デバック
+                        NavigationLink {
+                            MyWordsView()
+                        } label: {
+                            Text("デバックView")
+                        }
+                            
                         //お気に入りView
 //                        NavigationLink {
 //                            FavoriteListView()
