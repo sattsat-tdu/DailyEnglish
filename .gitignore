@@ -4,6 +4,9 @@
 
 ## User settings
 xcuserdata/
+*.xcuserdatad/
+*.xcscheme
+xcschememanagement.plist
 
 ## Obj-C/Swift specific
 *.hmap
@@ -20,15 +23,14 @@ playground.xcworkspace
 # Swift Package Manager
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-# Package.resolved
-# *.xcodeproj
-#
+Packages/
+Package.pins
+Package.resolved
+*.xcodeproj
+
 # Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
 # hence it is not needed unless you have added a package configuration file to your project
-# .swiftpm
-
+.swiftpm
 .build/
 
 # CocoaPods
@@ -36,17 +38,14 @@ playground.xcworkspace
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+Pods/
+*.xcworkspace
+Podfile.lock
 
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
+Carthage/Checkouts
 Carthage/Build/
 
 # fastlane
@@ -60,3 +59,23 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# DerivedData
+DerivedData/
+build/
+Build/
+
+# Logs and user-specific generated files
+*.log
+*.xcassets/.DS_Store
+*.swp
+*.tmp
+
+# Simulator logs and crash reports
+**/simulator/
+*.crash
+*.logarchive
+
+# SwiftPM build artifacts
+.swiftpm/xcode/
+.build/
