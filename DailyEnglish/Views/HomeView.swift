@@ -33,31 +33,31 @@ struct HomeView: View {
                         } label: {
                             Text("デバックView")
                         }
-                            
+                        
                         //お気に入りView
-//                        NavigationLink {
-//                            FavoriteListView()
-//                        } label: {
-//                            
-//                            HStack {
-//                                
-//                                Text("お気に入り単語　〉")
-//                                    .font(.headline)
-//                                    .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomLeading)
-//                                
-//                                Image(systemName: "folder.fill")
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .opacity(0.6)
-//                                    .frame(height: 50)
-//                                
-//                            }
-//                            .padding()
-//                            .background(yellowWhiteGradient)
-//                            .clipShape(.rect(cornerRadius: 10))
-//                            .shadow(radius: 1)
-//
-//                        }
+                        NavigationLink {
+                            FavoriteListView()
+                        } label: {
+                            
+                            HStack {
+                                
+                                Text("お気に入り単語　〉")
+                                    .font(.headline)
+                                    .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .bottomLeading)
+                                
+                                Image(systemName: "folder.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .opacity(0.6)
+                                    .frame(height: 50)
+                                
+                            }
+                            .padding()
+                            .background(yellowWhiteGradient)
+                            .clipShape(.rect(cornerRadius: 10))
+                            .shadow(radius: 1)
+                            
+                        }
                         
                         //リンクへ飛ばす。
                         Link(destination: URL(string: "https://apps.apple.com/jp/developer/daisuke-ishii/id1609332032")!) {

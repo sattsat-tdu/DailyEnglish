@@ -23,8 +23,8 @@ struct StudySoundView: View {
     @EnvironmentObject var speechRef: SpeechSynthesizer
     //すべてのデータを取得するが、仮グループは表示しない
     @FetchRequest(
-        sortDescriptors: [SortDescriptor(\.groupname)],
-        predicate: NSPredicate(format: "groupname != %@", "仮グループ")
+        sortDescriptors: [SortDescriptor(\.name)],
+        predicate: NSPredicate(format: "name != %@", "仮グループ")
     ) var groups: FetchedResults<Group>
     @State var group: Group?
     @State private var showingDialog = false
@@ -104,7 +104,7 @@ struct StudySoundView: View {
                         Picker("出題する範囲", selection: $group) {
                             Text("範囲を選択").tag(nil as Group?) // デフォルトの選択肢を追加
                             ForEach(groups, id: \.self) { group in
-                                Text(group.groupname ?? "")
+                                Text(group.name ?? "")
                                     .tag(group as Group?)
                             }
                         }

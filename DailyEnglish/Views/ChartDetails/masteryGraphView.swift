@@ -13,7 +13,7 @@ struct masteryGraphView: View {
     @EnvironmentObject var dataManager: CoreDataManager
     @FetchRequest(
         sortDescriptors: [],
-        predicate: NSPredicate(format: "groupname CONTAINS[cd] %@", "単語")
+        predicate: NSPredicate(format: "name CONTAINS[cd] %@", "単語")
     ) var subGroup: FetchedResults<Group>
     
     @State private var goodWord:Int16 = 0
@@ -107,13 +107,13 @@ struct masteryGraphView: View {
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 1)) {
-                if let goodGroup = subGroup.filter({ $0.groupname == "習得単語" }).first {
+                if let goodGroup = subGroup.filter({ $0.name == "習得単語" }).first {
                     goodWord = Int16(goodGroup.word?.count ?? 0)
                 }
-                if let subtleGroup = subGroup.filter({ $0.groupname == "微妙単語" }).first {
+                if let subtleGroup = subGroup.filter({ $0.name == "微妙単語" }).first {
                     subtleWord = Int16(subtleGroup.word?.count ?? 0)
                 }
-                if let badGroup = subGroup.filter({ $0.groupname == "苦手単語" }).first {
+                if let badGroup = subGroup.filter({ $0.name == "苦手単語" }).first {
                     badWord = Int16(badGroup.word?.count ?? 0)
                 }
                 

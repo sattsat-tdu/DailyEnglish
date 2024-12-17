@@ -12,7 +12,7 @@ struct ReviewView: View {
     @EnvironmentObject var dataManager: CoreDataManager
     @FetchRequest(
         sortDescriptors: [],
-        predicate: NSPredicate(format: "groupname CONTAINS[cd] %@", "単語")
+        predicate: NSPredicate(format: "name CONTAINS[cd] %@", "単語")
     ) var subGroup: FetchedResults<Group>
     
     @State private var isShowPlay = false

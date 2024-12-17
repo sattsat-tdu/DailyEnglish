@@ -11,8 +11,8 @@ import Charts
 struct ngslGraphView: View {
     
     @FetchRequest(
-        sortDescriptors: [SortDescriptor(\.groupname)],
-        predicate: NSPredicate(format: "groupname CONTAINS[cd] %@", "Part")
+        sortDescriptors: [SortDescriptor(\.name)],
+        predicate: NSPredicate(format: "name CONTAINS[cd] %@", "Part")
     ) var mainGroup: FetchedResults<Group>
     
     @State private var part1Value:CGFloat = 0
@@ -86,19 +86,19 @@ struct ngslGraphView: View {
         }
         .onAppear {
             withAnimation(.easeInOut(duration: 1)) {
-                if let part1Group = mainGroup.filter({ $0.groupname == "Part1 words" }).first {
+                if let part1Group = mainGroup.filter({ $0.name == "Part1 words" }).first {
                     part1Value = convertPercentage(group: part1Group)
                     maxPercent = part1Value
                     maxGroupName = "Part1単語"
                 }
-                if let part2Group = mainGroup.filter({ $0.groupname == "Part2 words" }).first {
+                if let part2Group = mainGroup.filter({ $0.name == "Part2 words" }).first {
                     part2Value = convertPercentage(group: part2Group)
                     if maxPercent < part2Value {
                         maxPercent = part2Value
                         maxGroupName = "Part2単語"
                     }
                 }
-                if let part3Group = mainGroup.filter({ $0.groupname == "Part3 words" }).first {
+                if let part3Group = mainGroup.filter({ $0.name == "Part3 words" }).first {
                     part3Value = convertPercentage(group: part3Group)
                     if maxPercent < part3Value {
                         maxPercent = part3Value
@@ -111,10 +111,10 @@ struct ngslGraphView: View {
     }
     private func convertPercentage(group: Group) -> CGFloat {
         let wordCount = Int16(group.word?.count ?? 0)
-        let total = group.total
+        let totalWordCount = group.wordCount
         
-        let wordCountDouble = Double(total - wordCount)
-        let totalDouble = Double(total)
+        let wordCountDouble = Double(totalWordCount - wordCount)
+        let totalDouble = Double(totalWordCount)
         
         if totalDouble == 0 {
             return 50

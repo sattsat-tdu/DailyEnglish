@@ -11,13 +11,13 @@ import SwiftUI
 struct MyWordsView: View {
     
     @FetchRequest(
-        sortDescriptors: [SortDescriptor(\.groupname)]
+        sortDescriptors: [SortDescriptor(\.name)]
     ) var groups: FetchedResults<Group>
     
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(groups, id: \.id) { group in
+                ForEach(groups, id: \.self) { group in
                     GroupCell(group: group)
                 }
             }

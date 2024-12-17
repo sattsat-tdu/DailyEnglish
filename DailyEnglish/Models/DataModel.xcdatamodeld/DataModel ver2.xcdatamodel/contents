@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24B91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="groupType" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String" elementID="groupname"/>
         <attribute name="wordCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" elementID="total"/>
+        <relationship name="subGroups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Group" inverseName="subGroups" inverseEntity="Group"/>
         <relationship name="word" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Word" inverseName="group" inverseEntity="Word"/>
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
@@ -14,6 +17,7 @@
         <attribute name="japanese" optional="YES" attributeType="String"/>
         <attribute name="jpsentence" optional="YES" attributeType="String"/>
         <attribute name="pos" optional="YES" attributeType="String"/>
+        <attribute name="proficiency" optional="YES" attributeType="String"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="word" inverseEntity="Group"/>
     </entity>
 </model>

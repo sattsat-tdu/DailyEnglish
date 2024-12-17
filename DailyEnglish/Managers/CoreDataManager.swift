@@ -60,7 +60,7 @@ final class CoreDataManager: ObservableObject {
         //単語データの追加
         for group in mainGroups {
             let newGroup = Group(context: viewContext)
-            newGroup.groupname = group
+            newGroup.name = group
             loadgroup.enter()
             loadInitWordCSV(setgroup: newGroup, fileName: group, completion: { loadgroup.leave() })
         }
@@ -69,7 +69,7 @@ final class CoreDataManager: ObservableObject {
             //優先度の高くなく、処理の軽いグループの作成(DisPatch)
             for subGroup in subGroups {
                 let newGroup = Group(context: self.viewContext)
-                newGroup.groupname = subGroup
+                newGroup.name = subGroup
             }
             self.save()
             print("すべてのCSVデータのロードが完了しました")
@@ -93,7 +93,7 @@ final class CoreDataManager: ObservableObject {
     //引数groupnameから、Groupを取得
     func getGroupWords(groupname: String) -> Set<Word> {
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "groupname == %@", groupname)
+        fetchRequest.predicate = NSPredicate(format: "name == %@", groupname)
         
         do {
             let targetGroup = try viewContext.fetch(fetchRequest)
@@ -233,7 +233,7 @@ final class CoreDataManager: ObservableObject {
     //引数groupnameから、Groupを取得
     func getGroup(groupname:String) -> Group?{
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "groupname == %@", groupname)
+        fetchRequest.predicate = NSPredicate(format: "name == %@", groupname)
         do {
             let groups = try viewContext.fetch(fetchRequest)
             if let targetGroup = groups.first {
@@ -258,11 +258,11 @@ final class CoreDataManager: ObservableObject {
     //引数と同じグループ名に保存、もしくは移動
     func moveWordToGroup(targetGroup: String, word: Word?) {
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "groupname == %@", targetGroup)
+        fetchRequest.predicate = NSPredicate(format: "name == %@", targetGroup)
         do {
             
             //初めて取り組んだ単語でないかつ、遷移先が習得単語の場合のみ実行。忘却曲線の準備
-            if let groupname = word?.group?.groupname,
+            if let groupname = word?.group?.name,
                !groupname.contains("Part"),
                targetGroup == "習得単語" {
                 print("忘却曲線の準備をします。")
@@ -315,7 +315,7 @@ final class CoreDataManager: ObservableObject {
                     print("Error: Insufficient columns at line \(index + 1)")
                 }
             }
-            setgroup.total = Int16(count)
+            setgroup.wordCount = Int16(count)
             print("csv代入完了")
             //ロード完了通知
             completion()

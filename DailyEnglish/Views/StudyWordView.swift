@@ -11,8 +11,8 @@ import Charts
 struct StudyWordView: View {
     
     @FetchRequest(
-        sortDescriptors: [SortDescriptor(\.groupname)],
-        predicate: NSPredicate(format: "groupname CONTAINS[cd] %@", "Part")
+        sortDescriptors: [SortDescriptor(\.name)],
+        predicate: NSPredicate(format: "name CONTAINS[cd] %@", "Part")
     ) var mainGroup: FetchedResults<Group>
     
     var body: some View {
@@ -36,10 +36,10 @@ struct StudyWordView: View {
     
     private func convertPercentage(group: Group) -> Int {
         let wordCount = Int16(group.word?.count ?? 0)
-        let total = group.total
+        let totalWordCount = group.wordCount
         
-        let wordCountDouble = Double(total - wordCount)
-        let totalDouble = Double(total)
+        let wordCountDouble = Double(totalWordCount - wordCount)
+        let totalDouble = Double(totalWordCount)
         
         if totalDouble == 0 {
             return 50
@@ -59,7 +59,7 @@ struct StudyWordView: View {
                 ForEach(mainGroup) { group in
                     BarMark(
                         x: .value("Value", convertPercentage(group: group)),
-                        y: .value("Name", group.groupname ?? "nil")
+                        y: .value("Name", group.name ?? "nil")
                     )
                     .annotation(position: .top){
                         //学習済みなら表示
@@ -80,7 +80,7 @@ struct StudyWordView: View {
     
     private var folderList: some View {
         VStack(spacing: 16) {
-            ForEach(mainGroup, id: \.id) { group in
+            ForEach(mainGroup, id: \.self) { group in
                 GroupCell(group: group)
             }
         }
