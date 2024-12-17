@@ -96,3 +96,15 @@ struct GroupCell: View {
         .itemStyle()
     }
 }
+
+#Preview {
+    let context = CoreDataManager.shared.viewContext
+    
+    // 仮のデータを CoreData に挿入
+    let group = Group(context: context)
+    group.name = "Hello World!"
+    group.wordCount = 10 // サンプルデータ
+
+    // Preview の描画
+    return GroupCell(group: group)
+}

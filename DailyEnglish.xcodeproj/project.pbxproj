@@ -68,11 +68,11 @@
 		00B3B8E52B1DDB4C0043BC60 /* aboutDandaiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B3B8E42B1DDB4C0043BC60 /* aboutDandaiView.swift */; };
 		00C60FA32BE3EAE100CCB8D2 /* GraphViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C60FA22BE3EAE100CCB8D2 /* GraphViewer.swift */; };
 		00D44C862B156FD10066CD4B /* editFolderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D44C852B156FD10066CD4B /* editFolderPage.swift */; };
+		00E091C02D119C8400445F01 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 00E091BF2D119C8400445F01 /* GoogleMobileAds */; };
 		00F8D7102D084FA7008EB03B /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D70F2D084F9A008EB03B /* UserDefaultsKeys.swift */; };
 		00F8D7152D087CEC008EB03B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D7142D087CE6008EB03B /* CoreDataManager.swift */; };
 		00F8D7172D090685008EB03B /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D7162D090685008EB03B /* CustomTab.swift */; };
 		00F8D71B2D0952B2008EB03B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F8D71A2D0952AE008EB03B /* AppState.swift */; };
-		739ECE5F64D264067C01EE73 /* Pods_DailyEnglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,9 +143,6 @@
 		00F8D7142D087CE6008EB03B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		00F8D7162D090685008EB03B /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
 		00F8D71A2D0952AE008EB03B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		770E00210745F6B937BB8164 /* Pods-DailyEnglish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyEnglish.release.xcconfig"; path = "Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish.release.xcconfig"; sourceTree = "<group>"; };
-		9DF66CBA68865CFB8695124D /* Pods-DailyEnglish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyEnglish.debug.xcconfig"; path = "Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish.debug.xcconfig"; sourceTree = "<group>"; };
-		ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyEnglish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,8 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E091C02D119C8400445F01 /* GoogleMobileAds in Frameworks */,
 				0063B52C2AF5F56F00738D5F /* AlertKit in Frameworks */,
-				739ECE5F64D264067C01EE73 /* Pods_DailyEnglish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,8 +163,6 @@
 			children = (
 				0015235D2AD6929C00C15ED2 /* DailyEnglish */,
 				0015235C2AD6929C00C15ED2 /* Products */,
-				C32183A6A41E73976019696E /* Pods */,
-				D8813D4BE1BB851B28DB28A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -371,23 +366,6 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		C32183A6A41E73976019696E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9DF66CBA68865CFB8695124D /* Pods-DailyEnglish.debug.xcconfig */,
-				770E00210745F6B937BB8164 /* Pods-DailyEnglish.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		D8813D4BE1BB851B28DB28A9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				ED2E57F700C6B47A61980F3D /* Pods_DailyEnglish.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -395,11 +373,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 001523692AD6929E00C15ED2 /* Build configuration list for PBXNativeTarget "DailyEnglish" */;
 			buildPhases = (
-				68047B60CB290B33F7FE164A /* [CP] Check Pods Manifest.lock */,
 				001523572AD6929C00C15ED2 /* Sources */,
 				001523582AD6929C00C15ED2 /* Frameworks */,
 				001523592AD6929C00C15ED2 /* Resources */,
-				3831C541436422D6DC3FAAC0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -408,6 +384,7 @@
 			name = DailyEnglish;
 			packageProductDependencies = (
 				0063B52B2AF5F56F00738D5F /* AlertKit */,
+				00E091BF2D119C8400445F01 /* GoogleMobileAds */,
 			);
 			productName = DailyEnglish;
 			productReference = 0015235B2AD6929C00C15ED2 /* DailyEnglish.app */;
@@ -440,6 +417,7 @@
 			mainGroup = 001523522AD6929C00C15ED2;
 			packageReferences = (
 				0063B52A2AF5F56F00738D5F /* XCRemoteSwiftPackageReference "AlertKit" */,
+				00E091BE2D119C8400445F01 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 0015235C2AD6929C00C15ED2 /* Products */;
 			projectDirPath = "";
@@ -476,48 +454,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		3831C541436422D6DC3FAAC0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyEnglish/Pods-DailyEnglish-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		68047B60CB290B33F7FE164A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DailyEnglish-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		001523572AD6929C00C15ED2 /* Sources */ = {
@@ -700,7 +636,6 @@
 		};
 		0015236A2AD6929E00C15ED2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9DF66CBA68865CFB8695124D /* Pods-DailyEnglish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -736,7 +671,6 @@
 		};
 		0015236B2AD6929E00C15ED2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 770E00210745F6B937BB8164 /* Pods-DailyEnglish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -802,6 +736,14 @@
 				minimumVersion = 5.1.7;
 			};
 		};
+		00E091BE2D119C8400445F01 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.13.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -809,6 +751,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0063B52A2AF5F56F00738D5F /* XCRemoteSwiftPackageReference "AlertKit" */;
 			productName = AlertKit;
+		};
+		00E091BF2D119C8400445F01 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00E091BE2D119C8400445F01 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 
